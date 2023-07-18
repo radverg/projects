@@ -1,0 +1,136 @@
+
+body {
+  background: url('images/background_noise2.png');
+  color: white;
+  font-family: Verdana;
+  min-width: 960px;
+  margin: 0px;
+}
+
+h1 {
+  font-size: 25px;
+  text-shadow: 3px 3px 7px #666666;
+  padding: 20px 10px 20px 10px;
+  float: left;
+  margin: 25px 0px 0px 0px;;
+}
+
+h2 {
+  font-style: bold;
+  font-size: 18px;
+};
+
+.logo {
+  float: left;      
+  margin: 25px;
+}
+
+article {
+  border: 2px solid #ffffff;
+  background: black;
+  padding: 15px 25px 15px 25px;
+  box-shadow: 2px 2px 20px #1c2428   ;
+  margin: 10px 13px 8px 13px;
+}
+
+.cleaner {
+  clear: both;
+}
+
+.download {
+  color: black;
+  background: #c4b93c;
+  border: 2px solid white;
+  border-radius:0px; 
+  padding: 0.4em 2em 0.4em 2em;
+  margin: 0px;
+  text-decoration: none;
+  float: left;
+  text-align: right;
+}
+
+.download:hover {
+  color: black;
+  background: yellow;
+  border: 2px solid white;
+  padding: 0.4em 2em 0.4em 2em;
+  margin: 0px;
+  text-decoration: none;
+  float: left;
+  text-align: right;
+}
+
+a, a:visited {
+  color: #dbfddc;
+  text-decoration: none;
+  font-weight: bold;
+  
+}
+
+a:hover {
+    color: #dbfddc;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+a.menu:link, a.menu:visited {
+    text-decoration: none;
+    padding: 20px;
+    margin: 20px;
+    color: white;
+    
+ 
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0px;
+    background-color: black;
+    border-bottom:  3px solid white;
+    border-top:  3px solid white;
+    height:  73px;
+}
+
+
+nav ul li {
+   float: left; 
+   height: 63px;
+   line-height: 4.7em;
+   transition: 400ms;
+}
+
+.selected:link, a.selected:visited {
+    background-color: gray;
+}
+
+nav ul li a:hover {
+    background-color: gray;
+    padding: 27px 30px 26px 30px;
+}
+
+
+nav ul li a:link, nav ul li a:visited {
+    text-decoration: none;
+    color: white;
+    padding: 27px 30px 26px 30px;
+    transition: 400ms;
+}
+
+.screenshot {
+    float: left;
+}
+
+td {
+    padding: 7px 12px 7px 12px;
+}
+
+textarea {
+    width: 290px;
+    height: 150px;
+    margin: 15px 0px 0px 15px;
+}
+
+input[type="submit"] {
+    margin: 15px 0px 15px 15px;
+    padding: 10px 20px 10px 20px;
+}

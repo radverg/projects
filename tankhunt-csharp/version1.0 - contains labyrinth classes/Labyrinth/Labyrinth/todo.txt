@@ -1,0 +1,7 @@
+﻿todo list - co udělat:
+- zprovoznit kameru -done
+- přidat cíl, rozpoznat jej- -done
+- vytvořit komponentu rozhraní levelu - do ní udělat principielně kompas ukazující k cíli (grafika jen provizorní) - done
+- optimalizovat výkon 
+- vytvořit komponentu prvky levelu -  v ní budou náhodně generované věci (nepřátelelé, body) + vystřelené střely
+- vytvořit třídy nepřátelé a body a udělat jejich logiku

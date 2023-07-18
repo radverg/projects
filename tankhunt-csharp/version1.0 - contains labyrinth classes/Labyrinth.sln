@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labyrinth", "Labyrinth\Labyrinth\Labyrinth.csproj", "{F3EBC070-A62B-486E-9CFF-2E060CD5AB25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabyrinthContent", "Labyrinth\LabyrinthContent\LabyrinthContent.contentproj", "{6E8DBEC4-5C57-442D-BCB8-545DF140E647}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labyrinth_editor", "Labyrinth_editor\Labyrinth_editor\Labyrinth_editor.csproj", "{9BA96D83-0653-4470-9284-DD394CE0803B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labyrinth_editorContent", "Labyrinth_editor\Labyrinth_editorContent\Labyrinth_editorContent.contentproj", "{6F57BBB7-2FCA-4F52-B5BD-516B20A1B614}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabyrinthClient", "LabyrinthClient\LabyrinthClient.csproj", "{25FCC58A-EC6D-4656-92CC-EAF809DC7A3E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3EBC070-A62B-486E-9CFF-2E060CD5AB25}.Debug|x86.ActiveCfg = Debug|x86
+		{F3EBC070-A62B-486E-9CFF-2E060CD5AB25}.Release|x86.ActiveCfg = Release|x86
+		{F3EBC070-A62B-486E-9CFF-2E060CD5AB25}.Release|x86.Build.0 = Release|x86
+		{6E8DBEC4-5C57-442D-BCB8-545DF140E647}.Debug|x86.ActiveCfg = Debug|x86
+		{6E8DBEC4-5C57-442D-BCB8-545DF140E647}.Release|x86.ActiveCfg = Release|x86
+		{9BA96D83-0653-4470-9284-DD394CE0803B}.Debug|x86.ActiveCfg = Debug|x86
+		{9BA96D83-0653-4470-9284-DD394CE0803B}.Release|x86.ActiveCfg = Release|x86
+		{9BA96D83-0653-4470-9284-DD394CE0803B}.Release|x86.Build.0 = Release|x86
+		{6F57BBB7-2FCA-4F52-B5BD-516B20A1B614}.Debug|x86.ActiveCfg = Debug|x86
+		{6F57BBB7-2FCA-4F52-B5BD-516B20A1B614}.Release|x86.ActiveCfg = Release|x86
+		{25FCC58A-EC6D-4656-92CC-EAF809DC7A3E}.Debug|x86.ActiveCfg = Debug|x86
+		{25FCC58A-EC6D-4656-92CC-EAF809DC7A3E}.Debug|x86.Build.0 = Debug|x86
+		{25FCC58A-EC6D-4656-92CC-EAF809DC7A3E}.Release|x86.ActiveCfg = Release|x86
+		{25FCC58A-EC6D-4656-92CC-EAF809DC7A3E}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,8 @@
+﻿
+Level Format:
+
+(int square_size) (float sizex) (float size_y) (int walls_count) (float wall_x) (float wall_y) (byte type [0 = horiontal, 1 = vertical])
+
+Player all info update format:
+
+(byte id) (string name) (float position_x) float position_y) (float rotation) (int wins) (int kills) (int deaths)

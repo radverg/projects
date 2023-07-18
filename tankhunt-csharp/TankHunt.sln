@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TankHunt", "TankHunt\TankHunt\TankHunt.csproj", "{F3EBC070-A62B-486E-9CFF-2E060CD5AB25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TankHuntContent", "TankHunt\TankHuntContent\TankHuntContent.contentproj", "{6E8DBEC4-5C57-442D-BCB8-545DF140E647}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3EBC070-A62B-486E-9CFF-2E060CD5AB25}.Debug|x86.ActiveCfg = Debug|x86
+		{F3EBC070-A62B-486E-9CFF-2E060CD5AB25}.Debug|x86.Build.0 = Debug|x86
+		{F3EBC070-A62B-486E-9CFF-2E060CD5AB25}.Release|x86.ActiveCfg = Release|x86
+		{F3EBC070-A62B-486E-9CFF-2E060CD5AB25}.Release|x86.Build.0 = Release|x86
+		{6E8DBEC4-5C57-442D-BCB8-545DF140E647}.Debug|x86.ActiveCfg = Debug|x86
+		{6E8DBEC4-5C57-442D-BCB8-545DF140E647}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

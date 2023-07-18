@@ -1,0 +1,47 @@
+﻿<Window x:Class="TankHuntServer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Tank hunt - Server" Height="662.388" Width="609.627" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock HorizontalAlignment="Left" Margin="0 0 10 0" Text="Server type:" Grid.Row="0" VerticalAlignment="Center" Height="16"  Width="62"/>
+                <ComboBox Name="comboBoxServer" HorizontalAlignment="Center" Grid.Row="0" Width="358" Height="22">
+                    <ComboBoxItem Content="UDP server - lidgren network library" IsSelected="true"/>
+                    <ComboBoxItem Content="WebSocket server" IsSelected="true" />
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                <TextBlock Text="Port:           " Margin="0 0 10 0"/>
+                <TextBox Name="tbPort" Width="70" TextChanged="tbPort_TextChanged" ></TextBox>
+            </StackPanel>
+        </StackPanel>
+
+
+
+        <TextBlock Grid.Row="1" Text="Peers connected: "></TextBlock>
+        <ListBox Name="listBoxPeersConnected" Margin="0 20 0 0" Grid.Row="1"></ListBox>
+
+        <TextBlock Grid.Row="2" Text="Message log: "></TextBlock>
+        <ListBox Name="listBoxmessageLog" Margin="0 20 0 0" Grid.Row="2" Background="White">
+
+        </ListBox>
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <Button Name="btnStartServer" Content="Start server" HorizontalAlignment="Left" Margin="0 0 10 0"  VerticalAlignment="Center" Width="80" Click="btnStartServer_Click"/>
+            <Button Name="btnStopServer" Content="Stop server" HorizontalAlignment="Left" Margin="0 0 10 0" VerticalAlignment="Center" Width="80" Click="btnStopServer_Click"/>
+            <Button Name="btnHideWindow" Content="Hide window" HorizontalAlignment="Left" Margin="0 0 25 0"  VerticalAlignment="Center" Width="80" Click="btnHideWindow_Click"/>
+            <CheckBox Name="chbRunHiddenOnStartup" Content="Run hidden on Windows startup" VerticalAlignment="Center" Checked="chbRunHiddenOnStartup_Checked" Unchecked="chbRunHiddenOnStartup_Unchecked" ></CheckBox>
+        </StackPanel>
+
+       
+
+
+
+    </Grid>
+</Window>

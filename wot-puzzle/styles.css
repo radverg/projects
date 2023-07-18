@@ -1,0 +1,43 @@
+#maps {
+
+}
+
+.pokus {
+    position: absolute;
+    clip: rect(100px,200px,200px,100px);
+}
+
+body {
+    width: 100%;
+    font-family: Verdana;
+    min-width: 960px;
+}
+
+#mapList {
+    width: 20%;
+}
+
+#mapList div {
+    background-color: midnightblue;
+    color: white;
+    font-weight: bold;
+    width: 85%;
+    cursor: pointer;
+    padding: 10px 0px 10px 30px;
+    border-radius: 10px;
+
+
+}
+
+input {
+
+}
+
+img {
+    cursor: pointer;
+
+}
+
+#settings {
+
+}

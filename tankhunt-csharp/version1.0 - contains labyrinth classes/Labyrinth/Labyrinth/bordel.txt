@@ -1,0 +1,447 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+
+
+namespace Labyrinth
+{
+    /// <summary>
+    /// This is a game component that implements IUpdateable.
+    /// </summary>
+    public class MenuMComponent : Microsoft.Xna.Framework.DrawableGameComponent
+    {
+        string IP = "90.180.196.121";
+        string Port = "8080";
+        string text_output;
+        public string name = "";
+        bool enter_ip = false;
+        private Labyrinth labyrinth;
+        int menu_state = -1;
+        public MenuMComponent(Labyrinth game)
+            : base(game)
+        {
+            labyrinth = game;
+        }
+
+        /// <summary>
+        /// Allows the game component to perform any initialization it needs to before starting
+        /// to run.  This is where it can query for any required services and load content.
+        /// </summary>
+        public override void Initialize()
+        {
+            // TODO: Add your initialization code here
+
+            base.Initialize();
+        }
+
+        /// <summary>
+        /// Allows the game component to update itself.
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        public override void Update(GameTime gameTime)
+        {
+            if (menu_state == -1)
+            {
+                text_output = "Enter name: " + name;
+                name += GetKey();
+                if (SC.keystate.IsKeyDown(Keys.Enter))
+                    menu_state = 0;
+            }
+            if (menu_state == 0)
+            {
+                text_output = "(A) - Connect to server \n(S) - Create server";
+                if (SC.keystate.IsKeyDown(Keys.A))
+                    menu_state = 1;
+                if (SC.keystate.IsKeyDown(Keys.S))
+                    menu_state = 2;
+                
+            }
+
+            if (menu_state == 1)
+            {
+                text_output = string.Format("Enter host port: {0} \nEnter host IP: {1}", Port, IP);
+                if (enter_ip == false)
+                {
+                    Port += GetKey();
+                    if (SC.keystate.IsKeyDown(Keys.Enter))
+                        enter_ip = true;
+                }
+                else
+                {
+
+                    IP += GetKey();
+                    if (SC.keystate.IsKeyDown(Keys.Enter) && SC.previous_keystate.IsKeyUp(Keys.Enter))
+                    {
+                        SC.is_server = false;
+                        SC.IP = IP;
+                        SC.Port = int.Parse(Port);
+                        labyrinth.SwitchScreen(labyrinth.PlayingMScreen, true);
+                    }
+                }
+            }
+
+            if (menu_state == 2)
+            {
+                text_output = "Enter port: " + Port;
+                Port += GetKey();
+                if (SC.keystate.IsKeyDown(Keys.Enter))
+                {
+                    SC.is_server = true;
+                    SC.Port = int.Parse(Port);
+                    labyrinth.SwitchScreen(labyrinth.PlayingMScreen, true);
+                }
+            }
+
+
+            base.Update(gameTime);
+        }
+
+        public override void Draw(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+            labyrinth.spriteBatch.Begin();
+            labyrinth.spriteBatch.DrawString(labyrinth.main_font, text_output, new Vector2(200, 400) * SC.resv_ratio, Color.White);
+
+            
+            labyrinth.spriteBatch.End();
+            base.Draw(gameTime);
+        }
+
+        private string GetKey()
+        {
+            if (SC.keystate.IsKeyDown(Keys.D0) && SC.previous_keystate.IsKeyUp(Keys.D0))
+                return "0";
+            else if (SC.keystate.IsKeyDown(Keys.D1) && SC.previous_keystate.IsKeyUp(Keys.D1))
+                return "1";
+            else if (SC.keystate.IsKeyDown(Keys.D2) && SC.previous_keystate.IsKeyUp(Keys.D2))
+                return "2";
+            else if (SC.keystate.IsKeyDown(Keys.D3) && SC.previous_keystate.IsKeyUp(Keys.D3))
+                return "3";
+            else if (SC.keystate.IsKeyDown(Keys.D4) && SC.previous_keystate.IsKeyUp(Keys.D4))
+                return "4";
+            else if (SC.keystate.IsKeyDown(Keys.D5) && SC.previous_keystate.IsKeyUp(Keys.D5))
+                return "5";
+            else if (SC.keystate.IsKeyDown(Keys.D6) && SC.previous_keystate.IsKeyUp(Keys.D6))
+                return "6";
+            else if (SC.keystate.IsKeyDown(Keys.D7) && SC.previous_keystate.IsKeyUp(Keys.D7))
+                return "7";
+            else if (SC.keystate.IsKeyDown(Keys.D8) && SC.previous_keystate.IsKeyUp(Keys.D8))
+                return "8";
+            else if (SC.keystate.IsKeyDown(Keys.D9) && SC.previous_keystate.IsKeyUp(Keys.D9))
+                return "9";
+            else if (SC.keystate.IsKeyDown(Keys.Space) && SC.previous_keystate.IsKeyUp(Keys.Space))
+                return ".";
+
+            return "";
+             
+        }
+    }
+}
+
+
+
+// network component
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using System.Windows.Forms;
+using System.IO;
+using System.Net;
+using Lidgren.Network;
+
+
+namespace Labyrinth
+{
+    /// <summary>
+    /// This is a game component that implements IUpdateable.
+    /// </summary>
+    public class NetworkComponent : Microsoft.Xna.Framework.GameComponent
+    {
+        private ConnectionInfo con_info;
+        private Labyrinth labyrinth;
+        public enum UserType { None, ServerUser, ClientOnly, WaitingUser }
+        public TcpServer tcp_server = null;
+        public TcpUser tcp_user = null;
+        public UserType user_type;
+        public DataTranslator Data_translator { get; set; }
+        private List<string> All_data { get; set; }
+
+        private Server server = null;
+        private Client client = null;
+
+
+
+
+        private List<string> outgoing_data_pack = new List<string>();
+
+        private Timer client_acceptor_timer = new Timer(1000);
+        private Timer data_send_timer = new Timer(30);
+
+        int frame_counter = 0;
+
+        public NetworkComponent(Labyrinth game)
+            : base(game)
+        {
+            labyrinth = game;
+            All_data = new List<string>();
+           // Server_Lidgren = new NetServer(new NetPeerConfiguration("ffffff"));
+        
+        }
+
+        /// <summary>
+        /// Allows the game component to perform any initialization it needs to before starting
+        /// to run.  This is where it can query for any required services and load content.
+        /// </summary>
+        public override void Initialize()
+        {
+            Data_translator = new DataTranslator();
+            client_acceptor_timer.Start();
+            data_send_timer.Start();
+            base.Initialize();
+        }
+
+        /// <summary>
+        /// Allows the game component to update itself.
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        public override void Update(GameTime gameTime)
+        {
+            // Update timers -------------------------------
+            client_acceptor_timer.Update(gameTime);
+            data_send_timer.Update(gameTime);
+            // ---------------------------------------------
+
+         /*   NetOutgoingMessage messs = Server_Lidgren.CreateMessage();
+            messs.Write((byte)6);
+            messs.Write("lol");
+            messs.Write(true);
+            byte[] data = messs.Data;
+            NetOutgoingMessage mess2 = Server_Lidgren.CreateMessage();
+            mess2.Write(data);
+            MessageBox.Show(mess2.ReadByte() + mess2.ReadString() + mess2.ReadBoolean() + mess2.po);*/
+                       
+     
+
+            if (tcp_server == null && tcp_user == null)
+                if (!ConnectionLoop())
+                    return;
+            if (server != null)
+                server.Receive_data();
+            
+
+            
+            return;
+
+            if (user_type == UserType.ServerUser) // Do this if server is hosted by this instantion
+            {
+                if (client_acceptor_timer.IsTicked)
+                    tcp_server.AcceptClient();// Allows other clients to connect
+              
+
+                if (data_send_timer.IsTicked)
+                {
+    
+                    if (labyrinth.container.Player_tank_c.player.PositionChanged() || labyrinth.container.Player_tank_c.player.RotationChanged())
+                        SendPlayer(true);
+                    frame_counter = 0;
+                }
+
+
+                tcp_server.SendAllDataToAll();
+                tcp_server.ReceiveAllData();
+                CheckAndApplyData(tcp_server.data);
+                tcp_server.RemoveDisconected();
+               
+            }
+
+            if (user_type == UserType.ClientOnly || user_type == UserType.WaitingUser)
+            {
+              //  try
+              //  {
+                    if (data_send_timer.IsTicked && (labyrinth.container.Player_tank_c.player.PositionChanged() || labyrinth.container.Player_tank_c.player.RotationChanged() ) && user_type != UserType.WaitingUser)
+                    {
+                        SendPlayer(false); // Send player info to server
+                        frame_counter = 0;
+                    }
+
+                    tcp_user.AcceptAllData(); // Get data if available
+                    if (tcp_user.Received_data.Count != 0)
+                        All_data.Add(string.Format("{0} --- {1}", gameTime.TotalGameTime.ToString(), tcp_user.Received_data[0]));
+
+
+                    CheckAndApplyData(tcp_user.Received_data);
+                    tcp_user.Received_data.Clear();
+                //}
+             //   catch
+              //  {
+              //      labyrinth.SwitchScreen(labyrinth.DisconnectScreen, true);
+              //  }
+
+            }
+
+            frame_counter++; // Increment frame counter
+
+            base.Update(gameTime);
+        }
+
+       
+
+        public bool ConnectionLoop()
+        {
+            bool locked = true;
+            server = null;
+            client = null;
+ 
+            while (locked)
+            {
+                con_info = labyrinth.ShowConnectionScreen(null);
+                if (con_info == null)
+                {
+                    return false;
+                }
+               
+                if (con_info.Server)
+                {
+                    user_type = UserType.ServerUser;
+                    tcp_server = new TcpServer();
+                    server = new Server();
+                    try
+                    {
+                      //  tcp_server.CreateServer(con_info.Port);
+                        server.CreateServer(con_info.Port);
+                        labyrinth.container.Player_tank_c.player.Net_ID = 0;
+                        locked = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error occured while creating a new server!\n" + ex.Message, "Error", MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                    }
+                }
+
+                if (!con_info.Server)
+                {
+                    user_type = UserType.WaitingUser;
+                    try
+                    {
+                        client = new Client(con_info.Player_name);
+                        client.AttemptConnection(con_info.IP_adress, con_info.Port);
+                        MessageBox.Show("done!");
+                       // tcp_user = new TcpUser(con_info.Port, con_info.IP_adress, con_info.Player_name);
+                       // labyrinth.container.Player_tank_c.player.Net_ID = tcp_user.ID;
+                        labyrinth.SwitchScreen(labyrinth.WaitingScreen, true); // Connection succesfull, wait until game is finished
+                        locked = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                    }
+                }
+                labyrinth.container.Player_tank_c.player.Player_name = con_info.Player_name;
+
+            }
+            return true;
+        }
+
+        public void CheckAndApplyData(List<string> data)
+        {
+            if (data != null)
+            {
+                foreach (string s in data)
+                {
+                    string[] splitted_data = s.Split(';');
+                    if (splitted_data[0] == "RANDOM_LEVEL")
+                    {
+                        labyrinth.container.Srl_c.SetExistingLevel(Data_translator.GetSquareSize(s), // Sets level according to data that came from server
+                            Data_translator.GetLevelSize(s),
+                            Data_translator.StringToLevel(s, RandomLevel.Horizontal_wall, RandomLevel.Vertical_wall));
+                        if (user_type == UserType.WaitingUser)
+                        {
+                            user_type = UserType.ClientOnly;
+                            labyrinth.SwitchScreen(labyrinth.PlayingMScreen, true); // Map loaded, allow waiting user to play
+                        }
+                       
+                        SendPlayer(user_type == UserType.ServerUser);
+                    }
+                    else if (splitted_data[0] == "PLAYER" && splitted_data[1] != con_info.Player_name) // Load player data
+                    {
+                      //  labyrinth.container.Tcp_sprite_drawer_c.UpdatePlayer(Data_translator.GetPlayerID(s), Data_translator.GetPlayerPosition(s), Data_translator.GetPlayerRotation(s));   
+                        labyrinth.container.Player_tank_c.UpdatePlayer(Data_translator.GetPlayerID(s), Data_translator.GetPlayerPosition(s), Data_translator.GetPlayerRotation(s));
+                    }
+                    else if (splitted_data[0] == "NORMAL_SHOT") 
+                    {
+                        Shot shot = new Shot(OneShotCannon.Shot_texture, Data_translator.GetShotPosition(s), new Vector2(OneShotCannon.Shot_texture.Width, OneShotCannon.Shot_texture.Height) * SC.resv_ratio, Color.White,
+                            labyrinth.container.Srl_c.Level.Walls, 0, new Vector2(0.5f, 0.5f), 8000);
+                        shot.Velocity_coefficient = Data_translator.GetShotCoefficient(s);
+
+                        labyrinth.container.Mshots_c.Shots.Add(shot);
+                    }
+                }
+
+
+            }
+
+        }
+
+        public void SendPlayer(bool is_server)
+        {
+            if (!is_server)
+                tcp_user.SendData(Data_translator.PlayerToString(labyrinth.container.Player_tank_c.player, con_info.Player_name));
+            else
+                tcp_server.data.Add(Data_translator.PlayerToString(labyrinth.container.Player_tank_c.player, con_info.Player_name));            
+
+        }
+        public void SendShot(Shot shot)
+        {
+            if (tcp_user == null)
+                tcp_server.data.Add(Data_translator.ShotToString(shot));
+            else
+                tcp_user.SendData(Data_translator.ShotToString(shot));
+        }
+
+        public void Write()
+        {
+            using (StreamWriter sw = new StreamWriter("data.txt"))
+            {
+                foreach (string s in All_data)
+                {
+                    sw.WriteLine(s);
+                }
+            }
+        }
+
+        public void Disconnect()
+        {
+            if (user_type == UserType.ClientOnly)
+            {
+                tcp_user.DisconnectClient();
+            }
+        }
+
+        public void AddOutgoingData(object data_object)
+        {
+            string output = "";
+            if (data_object is TankPlayerSprite)
+                output = Data_translator.PlayerToString((TankPlayerSprite)data_object, con_info.Player_name);
+            else if (data_object is RandomLevel)
+                output = Data_translator.LevelToString((RandomLevel)data_object);
+          
+        }
+     
+   
+    }
+}

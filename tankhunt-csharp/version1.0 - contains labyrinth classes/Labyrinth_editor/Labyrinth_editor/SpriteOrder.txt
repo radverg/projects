@@ -1,0 +1,148 @@
+﻿INDEX       SPRITE			ASSET NAME
+0           none			none
+1           Character		human
+2			Basic wall		basicwall
+3			Green wall		green_wall
+4			Grass			grass
+5			Finish			finish
+
+
+
+
+
+ // Set left bounce
+            Player.IM.LeftI = ((Player.Rectangle.Intersects(Level_component.Level_set.Selected_level.Field[(int)block_position.X - 1, (int)block_position.Y].Rectangle) &&
+            Level_component.Level_set.Selected_level.Field[(int)block_position.X - 1, (int)block_position.Y].Writenumber != 0) ||
+            (Player.Rectangle.Intersects(Level_component.Level_set.Selected_level.Field[(int)block_position.X - 1, (int)block_position.Y + 1].Rectangle) &&
+            Level_component.Level_set.Selected_level.Field[(int)block_position.X - 1, (int)block_position.Y + 1].Writenumber != 0) ||
+            (Player.Rectangle.Intersects(Level_component.Level_set.Selected_level.Field[(int)block_position.X - 1, (int)block_position.Y - 1].Rectangle) &&
+            Level_component.Level_set.Selected_level.Field[(int)block_position.X - 1, (int)block_position.Y - 1].Writenumber != 0));
+
+            // Set right bounce
+            Player.IM.RightI = ((Player.Rectangle.Intersects(Level_component.Level_set.Selected_level.Field[(int)block_position.X + 1, (int)block_position.Y].Rectangle) &&
+            Level_component.Level_set.Selected_level.Field[(int)block_position.X + 1, (int)block_position.Y].Writenumber != 0) ||
+            (Player.Rectangle.Intersects(Level_component.Level_set.Selected_level.Field[(int)block_position.X + 1, (int)block_position.Y + 1].Rectangle) &&
+            Level_component.Level_set.Selected_level.Field[(int)block_position.X + 1, (int)block_position.Y + 1].Writenumber != 0) ||
+            (Player.Rectangle.Intersects(Level_component.Level_set.Selected_level.Field[(int)block_position.X + 1, (int)block_position.Y - 1].Rectangle) &&
+            Level_component.Level_set.Selected_level.Field[(int)block_position.X + 1, (int)block_position.Y - 1].Writenumber != 0));
+
+            // Set top bounce
+            Player.IM.TopI = ((Player.Rectangle.Intersects(Level_component.Level_set.Selected_level.Field[(int)block_position.X, (int)block_position.Y - 1].Rectangle) &&
+            Level_component.Level_set.Selected_level.Field[(int)block_position.X, (int)block_position.Y - 1].Writenumber != 0) ||
+            (Player.Rectangle.Intersects(Level_component.Level_set.Selected_level.Field[(int)block_position.X - 1, (int)block_position.Y - 1].Rectangle) &&
+            Level_component.Level_set.Selected_level.Field[(int)block_position.X - 1, (int)block_position.Y - 1].Writenumber != 0) ||
+            (Player.Rectangle.Intersects(Level_component.Level_set.Selected_level.Field[(int)block_position.X + 1, (int)block_position.Y - 1].Rectangle) &&
+            Level_component.Level_set.Selected_level.Field[(int)block_position.X + 1, (int)block_position.Y - 1].Writenumber != 0));
+
+            // Set down bounce
+            Player.IM.DownI = ((Player.Rectangle.Intersects(Level_component.Level_set.Selected_level.Field[(int)block_position.X, (int)block_position.Y + 1].Rectangle) &&
+            Level_component.Level_set.Selected_level.Field[(int)block_position.X, (int)block_position.Y + 1].Writenumber != 0) ||
+            (Player.Rectangle.Intersects(Level_component.Level_set.Selected_level.Field[(int)block_position.X - 1, (int)block_position.Y + 1].Rectangle) &&
+            Level_component.Level_set.Selected_level.Field[(int)block_position.X - 1, (int)block_position.Y + 1].Writenumber != 0) ||
+            (Player.Rectangle.Intersects(Level_component.Level_set.Selected_level.Field[(int)block_position.X + 1, (int)block_position.Y + 1].Rectangle) &&
+            Level_component.Level_set.Selected_level.Field[(int)block_position.X + 1, (int)block_position.Y + 1].Writenumber != 0));
+
+
+			foreach (Sprite s in Level_component.Level_set.Selected_level.Field)
+            {
+                if (Player.Rectangle.Intersects(s.Rectangle) && s.Writenumber == 0)
+                {
+                   // labyrinth.Exit();
+                    if (block_position.X > s.Rectangle.X)
+                    {
+                        Player.IM.LeftI = true;
+                        labyrinth.Exit();
+                    }
+
+                    if (block_position.X < s.Rectangle.X)
+                    {
+                        Player.IM.RightI = true;
+                      //  labyrinth.Exit();
+                    }
+
+                    if (block_position.Y > s.Rectangle.Y)
+                    {
+                        Player.IM.DownI = true;
+                        labyrinth.Exit();
+                    }
+
+                    if (block_position.Y < s.Rectangle.Y)
+                    {
+                        Player.IM.TopI = true;
+                       //labyrinth.Exit();
+                    }
+                    
+                }
+            }
+
+			odrazí se od sebe - je nastaveno writenumber na počáteční pozici 1 - podmínka se splní 
+
+
+			 foreach (Sprite s in Level_component.Level_set.Selected_level.Field)
+            {
+                if (Player.Rectangle.Intersects(s.Rectangle) && (s.Writenumber != 0 && s.Writenumber != 1))
+                {
+                    writenumber = s.Writenumber;
+                    // labyrinth.Exit();
+                    if (block_position.X > SC.GetSquarePosition(s.Rectangle.X))
+                    {
+                        Player.IM.LeftI = true;
+                        //labyrinth.Exit();
+                    }
+
+                    if (block_position.X < SC.GetSquarePosition(s.Rectangle.X))
+                    {
+                        Player.IM.RightI = true;
+                         // labyrinth.Exit();
+                    }
+
+                    if (block_position.Y > SC.GetSquarePosition(s.Rectangle.Y))
+                    {
+                        Player.IM.DownI = true;
+                       // labyrinth.Exit();
+                    }
+
+                    if (block_position.Y < SC.GetSquarePosition(s.Rectangle.Y))
+                    {
+                        Player.IM.TopI = true;
+                       // labyrinth.Exit();
+                    }
+
+                }
+
+            }
+
+			Player.Velocity.X * gameTime.ElapsedGameTime.TotalMilliseconds * SC.res_ratio * 
+			Player.Velocity.Y * gameTime.ElapsedGameTime.TotalMilliseconds * SC.res_ratio * 
+
+
+			public void NullBlockPositions()
+        {
+            for (int i = 0; i < Block_positions.Length; i++)
+            {
+                Block_positions[i] = null;
+            }
+        }
+
+		 foreach (Sprite s in Level_component.Level_set.Selected_level.Field) // Decide about bounces
+            {
+                if (Rectangle.Intersects(s.Rectangle) && (s.Writenumber != 0 && s.Writenumber != 1))
+                {
+                    if (CheckBlockBounces(s.Rectangle, BouncingSprite.Bounces.Left))
+                        IM.LeftI = true;
+                    
+                    if (CheckBlockBounces(s.Rectangle, BouncingSprite.Bounces.Right))
+                        IM.RightI = true;
+
+                    if (CheckBlockBounces(s.Rectangle, BouncingSprite.Bounces.Down))
+                        IM.DownI = true;
+
+                    if (CheckBlockBounces(s.Rectangle, BouncingSprite.Bounces.Top))
+                        IM.TopI = true;
+                }
+                // Check finish
+               if (Rectangle.Intersects(s.Rectangle) && (s.Writenumber == 5) && GetBlockPositionsCount() == 1)
+                {
+                   // labyrinth.Exit();
+                }
+            }

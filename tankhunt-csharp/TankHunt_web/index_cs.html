@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+  
+  <html>
+    <head>
+      <title>Tank hunt - Oficiální webová stránka</title>
+      <meta charset="UTF-8">
+      <meta name="author" content="Veverka-Radek">
+      <meta name="description" content="2d multiplayer tank fighting game">
+      <meta name="keywords" content="tank, tanky, lov, multiplayer, 2d, hra, boj, bojování, zdarma, xna, programování, microsoft, .net">      
+      <link rel="stylesheet" type="text/css" href="styles.css">
+      <link rel="shortcut icon" href="images/circle_tank_favicon.png">       
+    </head>
+    
+    <body>    
+    <header>
+     
+        <img src="images/circle_tank_web_logo.png" class="logo"> 
+        <h1>Tank hunt - Multiplayerová hra - Oficiální stránka</h1>
+        <a href="index_cs.html"><img width="32px" height="21px" src="images/czech_flag.png" align="right" border="0"></a>
+        <a href="index.html"><img width="32px" height="21px" src="images/english_flag.png" align="right" border="0"></a>
+      <div class="cleaner"></div>
+      <hr>
+      <a href="#introduction">Úvod</a> -
+      <a href="#version1.5up">Verze 1.5 - stažení</a> -
+      <a href="#version1.4downl">Verze 1.4 - stažení</a> -
+      <a href="#version1.3downl">Verze 1.3 - stažení</a> -
+      <a href="#requirements">Instalace a herní požadavky</a> -
+      <a href="#controls">Ovládání</a> -
+      <a href="#setupserver">Jak nastavit server</a>
+      <hr><br>
+    </header>
+    
+      <article id="introduction">
+        <header>
+          <h2> Úvod: </h2>
+        </header>
+        <section>
+           <p>Dobrý den, jmenuji se Radek Veverka a jsem z České republiky. Vítejte na oficiální stránce hry zvané "Tank hunt", vytvořené v programovacím jazyce C# s použitím knihoven XNA framework a Lidgren-Network.
+           Tank hunt je 2D hra s velice jednoduchou grafikou. Každý hráč má svůj tank a bojuje s ním proti ostatním hráčům v bludišti.
+           Hra je pouze multiplayerová, jelikož singleplayer by nebyl zábavný. Při hraní je doporučeno být s ostatními hráči na skypu nebo teamspeaku, protože to hru dělá ještě zábavnější.
+           Nejsem však profesionální programátor, a tudíž hra obsahuje mnoho chyb, které zatím nemohu opravit z důvodu nedostatku času a znalostí.
+           Tyto chyby však nezpůsobují nehratelnost hry.</p>
+        </section>           
+      </article>
+      
+      <article id="version1.5up">
+        <header>
+          <h2> Verze 1.5 - informace: (9.10.2015): </h2>
+        </header>
+        <section>
+          <li>Plošný laser má stejnou rychlost na různých rozlišeních.</li>
+          <li>Je možno zapínat a vypínat vertikální synchronizaci a stabilní fps.</li>
+          <li>Pokud je hráč mrtvý, může posouvat s kamerou pomocí šipek.</li>
+          <li>Tloušťka zdí je stejná na různých rozlišeních.</li>
+          <li>Tank se nestává neovladatelným ve chvíli, kdy jiný hráč právě umírá.</li>
+          <li>Přidány nové zvuky.</li> 
+          <li>Pozice tanků jsou přesnější.</li>
+          <li>Zbraně se objevují pouze v oblastech, kam se dá dostat.</li>
+          <li>1 hráč potřebuje minimálně 1 vlastní čtverec - to znamená, že pokud zde budou například 4 hráči, budou zde minimálně 4 dosažitelné čtverce pro všechny hráče. (Zatím to ale nefunguje :D)</li>
+          <br>      
+            <a href="downloads/TankHunt1_5.zip" class="download">STÁHNOUT TANK HUNT 1.5</a><br><br>
+        </section>           
+      </article>
+      
+      <article id="version1.4downl">
+        <header>
+          <h2> Verze 1.4 - informace: (4.10.2015)</h2>
+        </header>
+        <section>
+           <li>Opravena chyba způsobující více smrtí tanku ve stejné hře.</li>
+           <li>Opravena chyba způsobující špatný odraz střely od stěny. </li>
+           <li>Jízda dozadu je zpomalena.</li>
+           <li>Hráči si mohou nastavit libovolné rozlišení, ovšem nejvyšší nastavitelné rozlišení je maximální rozlišení monitoru.</li>
+           <li>Je možné nastavit fullscreen kliknutím na klávesu F11.</li>
+           <li>Novinka: některé zdi se zbarvují podle barvy tanků ve hře. Tank může projet stejně zbarvenou zdí, jako je barva tanku, ale jiný hráč touto zdí neprojede.</li>
+           <li>Hráči se objevují na takových pozicích, aby k sobě mohli dojet.</li><br>      
+            <a href="downloads/TankHunt1_4.zip" class="download">STÁHNOUT TANK HUNT 1.4</a><br><br>
+        </section>           
+      </article>
+      
+      <article id="version1.3downl">
+        <header>
+          <h2> Verze 1.3 - vydána 16.9.2015: </h2>
+          
+        </header>  
+        <section>
+               <a href="downloads/TankHunt1_3.zip" class="download">STÁHNOUT TANK HUNT 1.3</a>  <br><br>
+        </section>           
+      </article>
+      
+      <article id="requirements">
+        <header>
+          <h2> Instalace a herní požadavky: </h2>
+        </header>
+        <section>
+           <li>Testováno na Microsoft Windows 7,8 a 10 (možná pojede i na Microsoft Windows XP).</li>
+           <li>Nainstalován Microsoft .NET framework 4.0 (pravděpodobně předinstalováno ve vašem počítači) -
+           <a href="http://www.microsoft.com/en-us/download/details.aspx?id=17718" target="_blank"> http://www.microsoft.com/en-us/download/details.aspx?id=17718</a> </li>
+           <li>Nainstalován XNA framework 4.0 redistributable (pokud jste to doteď nepotřebovali, tak není ve vašem počítači nainstalován)
+            - <a href="http://www.microsoft.com/en-us/download/details.aspx?id=20914" target="_blank">http://www.microsoft.com/en-us/download/details.aspx?id=20914 </a> </li>
+        </section>           
+      </article>
+      
+      
+      <article id="controls">
+        <header>
+          <h2> Ovládání: </h2>
+        </header>
+        <section>
+           <ul>
+            <li>Šipka nahoru - pohyb dopředu.</li>
+            <li>Šipka dolů - pohyb dozadu.</li>
+            <li>Šipky doleva a doprava - otáčení tanku a hlavně.</li>
+            <li>S - výstřel základní střely.</li>
+            <li>D - výstřel speciální střely (sebrané z náhodného místa v bludišti)</li>
+            <li>Mezerník - vygenerování nového bludiště (pouze pro hostitele serveru)</li>
+            <li>F - zapnutí neviditelnosti.</li>
+           </ul>
+        </section>           
+      </article>
+                       
+      <article id="setupserver">
+        <header>
+          <h2> Jak správně nastavit server: </h2>
+        </header>
+        <section>
+           <p>Můžete vytvořit server a říct kamarádům, aby se připojili, ale vytváření serveru, na který se lidé mohou připojit, požaduje nastavení 2 věcí:</p>
+           <p>1) Potřebujete povolit Tank hunt ve windows firewall. Windows se vás při vytváření serveru většinou zeptá, jestli chcete aplikaci povolit. Pokud se tak nestane, řiďte se následujícími kroky: </p>
+           <p>
+           - Otevřete ovládací panely. <br>
+           - Vyberte &quotBrána Windows firewall.&quot <br>
+           - Na levé straně okna klikněte na odkaz &quotPovolit aplikaci nebo funkci průchod bránou Windows Firewall&quot. <br>
+           - V seznamu najděte Tank hunt a zatrhněte hned vedle názvu <br>
+           </p>
+           <p>2) Potřebujete povolit port na vaší lokální ip adrese, potom se hráči budou moci připojit přes vaší externí ip. Toto neplatí pro hraní přes lan. </p>
+           <p>
+            - Stiskněte klávesy windows + R   <br>
+            - Napište &quotcmd&quot a klikněte ok. <br>
+            - Sem napiště &quotipconfig&quot a stiskněte enter.<br>
+            - Najděte default gateway adresu, napište ji jako odkaz do vašeho prohlížeče a stiskněte enter. <br>
+            - Napište uživatelské jméno a heslo (měli byste tyto údaje znát, pokud ne, vyzkoušejte standartní údaje: jméno: &quotadmin&quot a heslo: &quotadmin&quot). <br>
+            - Najděte zde tyto tlačítka: Port forwarding (přesměrování portů), Virtual server (virtuální server), NAT (každý routerto má jiné). Klikněte na to. <br>
+            - Tady nastavte váš port pro server a vaši lokální ip adresu, kterou můžete nalázt v cmd (Ipv4 address). Vyberte UDP protocol.<br>
+            - To je vše, hráči se nyní mohou připojit, pokud do kolonek napíší vaši externí ip adresu a vámi zvolený port. Více deatilů a informací můžete najít zde: <a target="_blank" href="http://www.wikihow.com/Set-Up-Port-Forwarding-on-a-Router">http://www.wikihow.com/Set-Up-Port-Forwarding-on-a-Router</a>
+            </p>                     
+        </section>           
+      </article>
+      
+    
+  
+  
+  </html>
+  
