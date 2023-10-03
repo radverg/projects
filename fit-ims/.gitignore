@@ -1,0 +1,12 @@
+*.o
+ims
+doc/*.log
+doc/*.out
+doc/*.aux
+doc/*.bbl
+doc/*.blg
+doc/*-blx.bib
+doc/*.xml
+doc/*.toc
+doc/*.bcf
+01-xvever13-xwagne10.zip

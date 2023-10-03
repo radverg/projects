@@ -1,0 +1,62 @@
+﻿@page
+@model iis_project.Pages.Accounts.IndexModel
+@{
+    ViewData["Title"] = "Seznam účtů";
+}
+
+<!--
+ IIS Projekt - Nemocnice
+ Listopad 2020
+ Autoři: Radek Veverka (xvever13)
+         Adam Sedmík (xsedmi04)
+-->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Users[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users[0].Fullname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users[0].BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users[0].Roles)
+            </th>
+            <th>
+                <a asp-page="./Edit"><i class="fas fa-plus"></i>&nbsp; Vytvořit účet</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Users)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fullname)
+                </td>
+                <td>
+                    @item.BirthDate.ToShortDateString()
+                </td>
+                <td>
+                    @string.Join(", ", item.Roles.Select(r => RolesMetadata.RolesNameMap[r.RoleId]))
+                </td>
+                <td>
+                    <a title="Editovat uživatelský účet" asp-page="./Edit" asp-route-username="@item.UserName"><i class="fas fa-user-edit"></i></a>
+                    <span>|</span>
+                    <a title="Smazat uživatelský účet" asp-page="./Delete" asp-route-username="@item.UserName"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+}
+

@@ -1,0 +1,22 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Zaregistrovat";
+}
+
+<!--
+ IIS Projekt - Nemocnice
+ Listopad 2020
+ Autoři: Radek Veverka (xvever13)
+         Adam Sedmík (xsedmi04)
+-->
+
+<div class="container">
+    <form method="post">
+        <h4>Vytvořit nový účet</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <partial name="_UserFormCommon" model="Model.Input" />
+        <button type="submit" class="btn btn-primary">Zaregistrovat</button>
+    </form>
+</div>

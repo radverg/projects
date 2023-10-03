@@ -1,0 +1,47 @@
+﻿@page "/Patients/{patientid}/Records/Edit/{recordid?}"
+@model iis_project.Pages.Patients.EditModel
+@{
+    ViewData["Title"] = "Úprava záznamu";
+}
+
+<!--
+ IIS Projekt - Nemocnice
+ Listopad 2020
+ Autoři: Radek Veverka (xvever13)
+         Adam Sedmík (xsedmi04)
+-->
+
+<div class="container">
+    <form id="account" method="post">
+        <h4>Detaily zdravotního záznamu</h4>
+        <hr />
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label class="label-required" asp-for="RecordInput.Name"></label>
+            <input asp-for="RecordInput.Name" class="form-control" />
+            <span asp-validation-for="RecordInput.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="RecordInput.Description"></label>
+            <textarea asp-for="RecordInput.Description" class="form-control"></textarea>
+            <span asp-validation-for="RecordInput.Description" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="label-required" asp-for="RecordInput.Doctor"></label>
+            <select asp-for="RecordInput.Doctor">
+                @if (Model.Doctor != null)
+                {
+                    <option value="@Model.Doctor.UserName">@Model.Doctor.Fullname</option>
+                }
+                @foreach (var item in Model.Doctors)
+                {
+                    <option value="@item.UserName">@item.Fullname</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Uložit</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,105 @@
+﻿@inject SignInManager<ApplicationUser> SignInManager
+
+<!DOCTYPE html>
+<!--
+ IIS Projekt - Nemocnice
+ Listopad 2020
+ Autoři: Radek Veverka (xvever13)
+         Adam Sedmík (xsedmi04)
+ Generated and edited file
+-->
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Elektronická zdravotnická knížka</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
+            <a class="navbar-brand" asp-area="" asp-page="/Index">Elektronická zdravotnická knížka</a>
+
+            <ul class="navbar-nav">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    @if (User.IsInRole(RolesMetadata.ADMIN))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-page="/Accounts/Index">Správa uživatelů</a>
+                        </li>
+                    }
+
+                    @if (User.IsInRole(RolesMetadata.ADMIN) || User.IsInRole(RolesMetadata.DOCTOR))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-page="/Patients/Index">Pacienti</a>
+                        </li>
+                    }
+                    @if (User.IsInRole(RolesMetadata.DOCTOR))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-page="/Patients/Records/Tickets/Index">Moje tikety</a>
+                        </li>
+                    }
+
+                    @if (User.IsInRole(RolesMetadata.PATIENT))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-page="/Patients/Records/Index" asp-route-patientid="@User.Identity.Name">Moje zdravotní záznamy</a>
+                        </li>
+                    }
+
+                    @if (User.IsInRole(RolesMetadata.INSURANCE_EMPLOYEE))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-page="/Insurance/Index">Nevyřízené žádosti</a>
+                        </li>
+                    }
+
+                    @if (User.IsInRole(RolesMetadata.INSURANCE_EMPLOYEE) || User.IsInRole(RolesMetadata.ADMIN))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-page="/Insurance/Acts">Správa úkonů</a>
+                        </li>
+                    }
+                }
+            </ul>
+
+            <div class="flex-grow-1"></div>
+
+            <ul class="navbar-nav">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-page="/Accounts/Edit" asp-route-username="@User.Identity.Name" title="Spravovat účet"> @User.Identity.Name</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <form class="form-inline" asp-page="/Logout" method="post">
+                            <button type="submit" class="nav-link btn btn-link text-dark">Odhlásit se</button>
+                        </form>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <div class="text-dark" asp-area="Identity" asp-page="/Account/Register">Nepřihlášen</div>
+                    </li>
+                }
+            </ul>
+
+        </nav>
+    </header>
+
+    <main role="main" class="m-3">
+        @RenderBody()
+    </main>
+
+    <script src="https://kit.fontawesome.com/a1b136c84e.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <partial name="_ValidationScriptsPartial" />
+</body>
+</html>

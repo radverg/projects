@@ -1,0 +1,81 @@
+﻿@page
+@using iis_project.Utils
+@model iis_project.Pages.Insurance.ActsModel
+@{
+    ViewData["Title"] = "Seznam úkonů";
+}
+
+<!--
+ IIS Projekt - Nemocnice
+ Listopad 2020
+ Autoři: Radek Veverka (xvever13)
+         Adam Sedmík (xsedmi04)
+-->
+
+<a asp-page="./Create"><h3><i class="fas fa-plus"></i>&nbsp;Vytvořit nový úkon</h3></a>
+
+@if (!Model.ActiveActs.Any() && !Model.DeactiveActs.Any())
+{
+    <h2><b>Nebyly nalezeny žádné úkony.</b></h2>
+}
+else
+{
+    @if (Model.ActiveActs.Any())
+    {
+        <div class="card">
+            <div class="card-header">
+                <strong>Aktivní úkony</strong>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>Název</th>
+                    <th>Cena</th>
+                    <th>Popis</th>
+                    <th></th>
+                </tr>
+                @foreach (MedicalAct item in Model.ActiveActs)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Price CZK</td>
+                        <td>@item.Description?.Trunc(80)</td>
+                        <td>
+                            <form asp-page-handler="delete" method="post">
+                                <input type="hidden" name="actid" value=@item.MedicalActId />
+                                <button class="btn btn-primary">Archivovat</button>
+                            </form>
+                        </td>
+
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+
+    @if (Model.DeactiveActs.Any())
+    {
+        <div class="card">
+            <div class="card-header">
+                <strong>Archivované úkony</strong>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>Název</th>
+                    <th>Cena</th>
+                    <th>Popis</th>
+                </tr>
+                @foreach (MedicalAct item in Model.DeactiveActs)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Price CZK</td>
+                        <td>@item.Description?.Trunc(120)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+}
+
+
+

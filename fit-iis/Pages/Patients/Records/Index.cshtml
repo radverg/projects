@@ -1,0 +1,53 @@
+﻿@page "/Patients/{patientid}/Records"
+@using iis_project.Utils
+@model iis_project.Pages.Patients.RecordsModel
+@{
+    ViewData["Title"] = "Seznam záznamů";
+}
+
+<!--
+ IIS Projekt - Nemocnice
+ Listopad 2020
+ Autoři: Radek Veverka (xvever13)
+         Adam Sedmík (xsedmi04)
+-->
+
+@if (Model.EditPermission)
+{
+    <a asp-page="./Edit" class="mb-3 d-block" asp-route-patientid="@RouteData.Values["patientid"]"><i class="fas fa-plus"></i>&nbsp;Nový zdravotní záznam</a>
+}
+else if (Model.Records.Count == 0)
+{
+    <div class="text-info">Nebyly nalezeny žádné zdravotní záznamy.</div>
+}
+
+@foreach (var r in Model.Records)
+{
+    <div class="card mb-2 record-overview status-@Enum.GetName(typeof(Data.Enums.StatusRecord), r.Status)" asp-page="./Record/ReportBrowser" asp-route-recordid="@r.MedicalRecordId">
+        <div class="card-header">
+            <div class="row">
+                <a class="col not-link-pls" asp-page="../Reports/RecordReportBrowser" asp-route-patientid="@RouteData.Values["patientid"]" asp-route-recordid="@r.MedicalRecordId">
+                    @r.Name
+                </a>
+
+                @if (Model.EditPermission)
+                {
+            <div class="col-3 text-right">
+                @if (r.Status == Data.Enums.StatusRecord.Open)
+                {
+                    <a title="Posune zdravotní záznam do stavu dokončení." class="text-info" asp-page="./Finish" asp-route-patientid="@RouteData.Values["patientid"]" asp-route-recordid="@r.MedicalRecordId" asp-route-returnUrl="@Request.Path">Dokončit</a> <span>&nbsp;|&nbsp;</span>
+                    <a asp-page="./Tickets/Create" asp-route-patientid="@RouteData.Values["patientid"]" asp-route-recordid="@r.MedicalRecordId"><i class="fas fa-plus"></i>&nbsp;Nové vyšetření</a> <span>&nbsp;|&nbsp;</span>
+                }
+                <a title="Upravit záznam nebo jej přiřadit jinému lékaři." asp-page="./Edit" asp-route-patientid="@RouteData.Values["patientid"]" asp-route-recordid="@r.MedicalRecordId"><i class="fas fa-user-edit"></i>&nbsp; Upravit</a>
+            </div>
+                }
+            </div>
+        </div>
+
+        <a class="card-body not-link-pls" asp-page="../Reports/RecordReportBrowser" asp-route-patientid="@RouteData.Values["patientid"]" asp-route-recordid="@r.MedicalRecordId">
+            <div>Stav: @StatusConverter.ConvertStatus(r.Status)</div>
+            <div>Vytvořeno: @r.DtCreated</div>
+            <div class="preserve-linebreaks">@r.Description</div>
+        </a>
+    </div>
+}

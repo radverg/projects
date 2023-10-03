@@ -1,0 +1,45 @@
+﻿@page
+@model iis_project.Pages.Patients.IndexModel
+@{
+    ViewData["Title"] = "Seznam pacientů";
+}
+
+<!--
+ IIS Projekt - Nemocnice
+ Listopad 2020
+ Autoři: Radek Veverka (xvever13)
+         Adam Sedmík (xsedmi04)
+-->
+
+@if (!Model.Patients.Any())
+{
+    <h3><b>Nebyly nalezeni žádní pacienti.</b></h3>
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            <strong>Pacienti</strong>
+        </div>
+        <table class="table">
+            <tr>
+                <th>Jméno</th>
+                <th>Datum Narození</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model.Patients)
+            {
+                <tr>
+                    <td>@item.GivenName @item.Surname</td>
+                    <td>@item.BirthDate.ToShortDateString()</td>
+                    <td>@item.Email</td>
+                    <td>
+                        <a title="Zobrazit zdravotní dokumentaci" asp-page="./Records/Index" asp-route-patientid="@item.UserName"><i class="fas fa-address-card"></i> Zdravotní záznamy</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+

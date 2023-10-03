@@ -1,0 +1,18 @@
+---- Sim stats ----
+Iteration: 162000 of 162000
+Total entered: 1406
+Entered regular: 977
+Entered infecting: 220
+Entered immune: 209
+Average shopping time: 11.732177min
+Average fumes inhaled: 0.015417
+
+Left total: 1387
+Left newly infected: 15
+
+In shop: 19
+In entrance queue: 919
+
+Newly infected/total: 0.010815
+Newly infected/total regular: 0.015544
+-------------------

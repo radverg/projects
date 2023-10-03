@@ -1,0 +1,35 @@
+﻿@page "/Patients/{patientid}/Records/{recordid}/Tickets/Create"
+@model iis_project.Pages.Patients.Tickets.CreateModel
+@{
+    ViewData["Title"] = "Vytvořit tiket";
+}
+
+<!--
+ IIS Projekt - Nemocnice
+ Listopad 2020
+ Autoři: Radek Veverka (xvever13)
+         Adam Sedmík (xsedmi04)
+-->
+
+<div class="container">
+    <form id="account" method="post">
+        <h4>Vytvořit nové vyšetření</h4>
+        <hr />
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="form-group">
+            <label class="label-required" asp-for="TicketInput.Doctor"></label>
+            <select class="form-control" asp-for="TicketInput.Doctor" asp-items="Model.DoctorsItems">
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="TicketInput.Description"></label>
+            <textarea class="form-control" asp-for="TicketInput.Description">
+            </textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Vytvořit</button>
+        </div>
+    </form>
+</div>

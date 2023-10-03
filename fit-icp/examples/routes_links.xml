@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Each route is defined as unique id, it's path, and it's link times -->
+<!-- Path is defined and ordered by stops, if route passes through street without stops, we need to define the passing street -->
+<!-- Link has set starting and ending time when it will go through route -->
+<!-- Link can also have reversed path -->
+<routes>
+    <route id="100">
+        <path>
+            <stop>S1</stop>
+            <stop>R1</stop>
+            <street>Street N</street>
+            <stop>O1</stop>
+            <stop>P2</stop>
+            <stop>P1</stop>
+            <stop>T1</stop>
+        </path>
+        <links>
+            <link start="20:30" end="21:30" reverse="false"></link>
+            <link start="21:30" end="22:30" reverse="false"></link>
+            <link start="22:30" end="23:30" reverse="false"></link>
+            <link start="23:30" end="00:30" reverse="false"></link>
+            <link start="00:30" end="01:30" reverse="false"></link>
+            <link start="01:30" end="02:30" reverse="false"></link>
+            <link start="02:30" end="03:30" reverse="false"></link>
+            <link start="03:30" end="04:30" reverse="false"></link>
+        </links>
+    </route>
+    <route id="101">
+        <path>
+            <stop>G1</stop>
+            <stop>G2</stop>
+            <stop>H1</stop>
+            <stop>I1</stop>
+            <stop>I2</stop>
+            <stop>I3</stop>
+            <stop>Z1</stop>
+            <stop>Y1</stop>
+            <stop>P1</stop>
+            <stop>P2</stop>
+            <stop>O1</stop>
+            <street>Street N</street>
+            <stop>Q1</stop>
+            <street>Street B</street>
+            <stop>A2</stop>
+            <stop>A1</stop>
+        </path>
+        <links>
+            <link start="06:00" end="08:00" reverse="false"></link>
+            <link start="07:00" end="09:00" reverse="false"></link>
+            <link start="08:00" end="10:00" reverse="false"></link>
+            <link start="09:00" end="11:00" reverse="false"></link>
+            <link start="10:00" end="12:00" reverse="false"></link>
+            <link start="11:00" end="13:00" reverse="false"></link>
+            <link start="08:00" end="10:00" reverse="true"></link>
+            <link start="09:00" end="11:00" reverse="true"></link>
+            <link start="10:00" end="12:00" reverse="true"></link>
+            <link start="11:00" end="13:00" reverse="true"></link>
+            <link start="12:00" end="14:00" reverse="true"></link>
+            <link start="13:00" end="15:00" reverse="true"></link>
+        </links>
+    </route>
+    <route id="102">
+        <path>
+            <stop>K1</stop>
+            <stop>L1</stop>
+            <stop>M1</stop>
+            <street>Street N</street>
+            <stop>Q1</stop>
+            <stop>C1</stop>
+            <stop>V1</stop>
+            <stop>W2</stop>
+            <stop>W1</stop>
+            <stop>F1</stop>
+            <stop>F2</stop>
+            <stop>X1</stop>
+            <stop>X2</stop>
+        </path>
+        <links>
+            <link start="12:00" end="14:00" reverse="false"></link>
+            <link start="14:00" end="16:00" reverse="false"></link>
+            <link start="16:00" end="18:00" reverse="false"></link>
+            <link start="18:00" end="20:00" reverse="false"></link>
+            <link start="20:00" end="22:00" reverse="false"></link>
+            <link start="12:00" end="14:00" reverse="true"></link>
+            <link start="14:00" end="16:00" reverse="true"></link>
+            <link start="16:00" end="18:00" reverse="true"></link>
+            <link start="18:00" end="20:00" reverse="true"></link>
+            <link start="20:00" end="22:00" reverse="true"></link>
+        </links>
+    </route>
+    <route id="103">
+        <path>
+            <stop>K1</stop>
+            <stop>J1</stop>
+            <stop>Z1</stop>
+            <stop>Y1</stop>
+            <stop>X2</stop>
+            <stop>X1</stop>
+            <stop>F2</stop>
+            <stop>F1</stop>
+            <street>Street E</street>
+            <stop>D1</stop>
+            <stop>V1</stop>
+            <street>Street U</street>
+            <stop>S1</stop>
+        </path>
+        <links>
+            <link start="08:30" end="10:30" reverse="false"></link>
+            <link start="10:30" end="12:30" reverse="false"></link>
+            <link start="12:30" end="14:30" reverse="false"></link>
+            <link start="14:30" end="16:30" reverse="false"></link>
+            <link start="16:30" end="18:30" reverse="false"></link>
+            <link start="18:30" end="20:30" reverse="false"></link>
+            <link start="20:30" end="22:30" reverse="false"></link>
+            <link start="22:30" end="00:30" reverse="false"></link>
+            <link start="07:30" end="09:30" reverse="false"></link>
+            <link start="09:30" end="11:30" reverse="false"></link>
+            <link start="11:30" end="13:30" reverse="false"></link>
+            <link start="13:30" end="15:30" reverse="false"></link>
+            <link start="15:30" end="17:30" reverse="false"></link>
+            <link start="17:30" end="19:30" reverse="false"></link>
+            <link start="19:30" end="21:30" reverse="false"></link>
+            <link start="21:30" end="23:30" reverse="false"></link>
+            <link start="23:30" end="01:30" reverse="false"></link>
+            <link start="08:45" end="10:45" reverse="true"></link>
+            <link start="10:45" end="12:45" reverse="true"></link>
+            <link start="12:45" end="14:45" reverse="true"></link>
+            <link start="14:45" end="16:45" reverse="true"></link>
+            <link start="16:45" end="18:45" reverse="true"></link>
+            <link start="18:45" end="20:45" reverse="true"></link>
+            <link start="20:45" end="22:45" reverse="true"></link>
+            <link start="22:45" end="00:45" reverse="true"></link>
+            <link start="07:45" end="09:45" reverse="true"></link>
+            <link start="09:45" end="11:45" reverse="true"></link>
+            <link start="11:45" end="13:45" reverse="true"></link>
+            <link start="13:45" end="15:45" reverse="true"></link>
+            <link start="15:45" end="17:45" reverse="true"></link>
+            <link start="17:45" end="19:45" reverse="true"></link>
+            <link start="19:45" end="21:45" reverse="true"></link>
+            <link start="21:45" end="23:45" reverse="true"></link>
+            <link start="23:45" end="01:45" reverse="true"></link>
+        </links>
+    </route>
+</routes>

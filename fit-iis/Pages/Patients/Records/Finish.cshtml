@@ -1,0 +1,22 @@
+﻿@page "/Patients/{patientid}/Records/{recordid}/Finish"
+@model iis_project.Pages.Patients.Records.FinishModel
+@{
+    ViewData["Title"] = "Potvrdit";
+}
+
+<!--
+ IIS Projekt - Nemocnice
+ Listopad 2020
+ Autoři: Radek Veverka (xvever13)
+         Adam Sedmík (xsedmi04)
+-->
+
+@if (Model.UnableToFinish)
+{
+    <p class="text-danger">Nelze dokončit záznam, obsahuje nedokončené tikety!</p>
+    <a asp-page="/Patients/Records/Index" asp-route-patientid="@RouteData.Values["patientid"]"><p><i class="fas fa-arrow-left"></i>&nbsp; Zpět na záznamy pacienta</p></a>
+}
+else
+{
+    <p class="text-danger">Úspěch - Měli jste být navráceni zpět...</p>
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0070)https://www.fit.vutbr.cz/study/courses/IIS/private/projekt/doc.html.cs -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2"><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid {
+        padding-top: 56.25%
+      }
+    </style>
+    
+    <title>Projekt IIS</title>
+    <style type="text/css">
+    	table { border-collapse: collapse; }
+    	td, th { border: 1px solid black; padding: 0.3em 0.5em; text-align: left; }
+    	dt { font-weight: bold; margin-top: 0.5em; }
+    </style>
+</head>
+<body>
+
+<!-- Zkontrolujte prosím nastavení kódování v hlavičce dokumentu 
+     podle použitého editoru -->
+
+    <h1>4. Nemocnice: elektronická zdravotní knížka</h1> <!-- Nahradte názvem svého zadání -->
+
+<dl>
+	<dt>Autoři</dt>
+	<dd>Adam sedmík <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+	    <a href="mailto:xsedmi04@stud.fit.vutbr.cz">xsedmi04@stud.fit.vutbr.cz</a> -
+		Vše ohledně pojištění, seznam pacientů, záznamů a tiketů, testování.
+	</dd>
+	<dd>Radek Veverka <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+	    <a href="mailto:xvever13@stud.fit.vutbr.cz">xvever13@stud.fit.vutbr.cz</a> - 
+		Zdravotní záznamy, lékařské zprávy, správa uživatelů, tikety.
+	</dd>
+	<dt>URL aplikace</dt>
+	<dd><a href="https://iisprojekt.azurewebsites.net/">https://iisprojekt.azurewebsites.net/</a></dd>
+</dl>
+
+<h2>Uživatelé systému pro testování</h2>
+<p>Uveďte prosím existující zástupce <strong>všech rolí uživatelů</strong>.</p>
+<table>
+    <tbody>
+        <tr><th>Login</th><th>Heslo</th><th>Role</th></tr>
+        <tr><td>admin@test.cz</td><td>iisiis</td><td>Administrátor</td></tr>
+        <tr><td>lekar1@test.cz</td><td>iisiis</td><td>Lékař</td></tr>
+        <tr><td>lekar2@test.cz</td><td>iisiis</td><td>Lékař</td></tr>
+        <tr><td>pacient1@test.cz</td><td>iisiis</td><td>Pacient</td></tr>
+        <tr><td>pacient2@test.cz</td><td>iisiis</td><td>Pacient</td></tr>
+        <tr><td>pojistovak@test.cz</td><td>iisiis</td><td>Pracovník zdravotní pojišťovny</td></tr>
+    </tbody></table>
+
+<h2>Implementace</h2>
+<p>
+    Projekt jsme implementovali v jazyce C# na platformě .NET 5. Vybrali jsme technologii <em>Razor pages</em> namísto <em>MVC</em>. 
+    Každá <em>Razor page</em> má svůj html kód a je provázána s C# třídou. 
+</p>
+<h3>
+    Správa uživatelů
+</h3>
+    <p>
+        Kód pro správů uživatelů se nacházi ve složce <code>Pages/Accounts</code>. Zde jsou view-modely <code>Delete, Edit a Index.</code>
+        View-model pro tvorbu uživatele velmi podobný jako editování, proto jsme tyto stránky spojili a rozlišujeme podle parametru v URL.
+        Index slouží k zobrazování seznamu uživatelů. <code>Edit</code> a <code>Delete</code> pak dělají stejnojmenné operace nad konkrétním uživatelem.
+        Každý uživatel má možnost editovat své údaje nebo smazat svůj účet po kliknutí na svoji emailovou adresu v pravém horním rohu stránky.
+    </p>
+
+ <h3>
+    Pohled pojištovny
+</h3>
+    <p>
+        Kód pro správu úkonů se nacházi ve složce <code>Pages/Insurance</code>. Zde jsou view-modely <code>Index, Create a Acts.</code>
+        V <code>Index</code> vidí pracovník zdravotní pojištovny žádosti o úhrady vystavené lékaři a má zde možnost je přijmout nebo odmítnout.
+        V <code>Acts</code> se nachází view-model na seznam úkonů, z této stránky má možnost jít vytvořit nový úkon (stránka <code>Create</code>) nebo prohlížet vytvořené zdravotní úkony.
+        Zde má i možnost archivovat zdravotní úkony, tím pádem lékař už nebude moci o archivované úkony zažádat, ale pokud již o ně bylo zažádáno před archivací, úkony budou stále v systému.
+    </p>
+
+ <h3>
+    Seznam záznamů pacienta
+</h3>
+     <p>
+         Kód pro seznam záznamů se nacházi ve složce <code>Pages/Records</code>. Zde jsou view-modely <code>Index, Edit a Finish.</code>
+         V <code>Index</code> vidí lékař všechny záznamy pacienta, které spravuje. Má zde možnost vytvořit nebo upravit/předat záznem (spojeny v view-modelu <code>Edit</code>).
+         Dále možnost uzavřít záznam (<code>Finish</code>), a rozkliknout záznam pro prohlížení záznamu. Pro uzavření záznamu je potřeba, aby všechny tikety náležící záznamu byli také uzavřené.
+</code></p>
+
+ <h3>
+    Seznam nevyřízených tiketů lékaře
+</h3>
+     <p>
+         Kód pro tikety se nacházi ve složce <code>Pages/Records/Tickets</code>. Zde jsou view-modely <code>Index, Create a Finish.</code>
+         Na <code>Create</code> se dostane lékař spravující záznam a zde může vytvořit žádost o vyšetření.
+         Na <code>Index</code> se vidí každý lékař seznam svých tiketů a má možnost se dostat na stránku s tiketem nebo tiket dokončit (<code>Finish</code>).
+    </p>
+
+ <h3>
+    Zobrazení záznamů, tiketů, lékařských zpráv. 
+</h3>
+     <p>
+         K zobrazování lékařských zpráv slouží 2 podobné prohlížeče záznamů: <code>Pages/Reports/RecordReportBrowser</code> a <code>Pages/Reports/TicketReportBrowser</code>. První slouží k výpisu zpráv přiřazených k zdravotnímu záznamu,
+         zároveň je na této stránce vpravo seznam tiketů, které jsou k tomuto záznamu přiřazeny. Přes tyto odkazy se dá dostat k detailům konkrétního tiketu, což je druhý prohlížeč záznamů, tentokrát na úrovni tiketu. 
+         Z této stránky se dá také žádat o proplacení úkonů pro daný tiket. Pacienti mají k těmto prohlížečům přístup také, nicméně vidí pouze svoje data a nemohou žádná přidávat nebo editovat.
+         Z těchto stránek může lékař nebo administrátor posunout stavy tiketů nebo záznamů a ukončit tak konkrétní tikety nebo zdravotní záznamy. Po uzavření už nelze editovat obsah záznamu nebo tiketu.
+     </p>
+
+<h3>
+    Pacienti
+</h3>
+    <p>
+        Pacient může procházet svoje zdravotní záznamy, včetně tiketů a lékařských zpráv zkrz view-modely <code>Patients/Records/Index, Patients/Reports/RecordReportBrowser a Patients/Reports/TicketReportBrowser</code>.
+        K seznamu pacientů má lékař přístup přes view-model <code>Patients/Index</code>.
+    </p>
+
+<h3>Databáze</h3>
+<p>
+    Jako databázový SQL server je použita implementace <em>Microsoft SQL Server</em>.
+    Databázový model je implementován v adresáři <code>Data</code>. Je využito <em>ORM</em> díky <em>Entity framework Core</em>. Každá tabulka v databázi je
+    mapována do kontrétní C# třídy. Databázový model je také propojen s databázovým modelem <em>Identity frameworku</em>, který slouží k sp
+    Jednotlivé entity v er diagramu odpovídají samotným tabulkám v databázi. 
+    Databáze navíc obsahuje jednu vazební tabulku TicketActs, která odpovídá žádostem o úhradě úkonů a obsahuje atribut Stav.
+</p>
+<img src="iis_er.png" />
+
+<h2>Instalace</h2>
+
+<p>
+    Pro spuštění aplikace je třeba mít nainstalován <em>ASP.NET Core Runtime 5.0.0</em>, návod nebo instalační soubory pro všechny platformy jsou k dispozici na <a href="https://dotnet.microsoft.com/download/dotnet/5.0">oficiálních stránkách Microsoftu</a>.
+    Je vyžadován také <em>Microsoft SQL Server, verze 13.0.4001</em>.
+    Soubor <code>appsettings.json</code> obsahuje položku <code>DefaultConnection</code>, která je využita systémem pro zisk údajů potřebných pro připojení k databázi. Je třeba tuto proměnnou nastavit dle lokálního prostředí a databázového server
+    výchozí konfigurace však funguje pro lokální MS-SQL instalaci.
+</p>
+
+<p>
+    Pro stažení závislostí lze použít příkaz:
+    <br />
+    <code>dotnet restore</code>
+    <br />
+    
+    Pro inicializaci schématu databáze a vytvoření testovacích uživatelů lze použít příkaz:
+    <br />
+    <code>dotnet ef database update</code>
+    <br />
+
+    Následně lze server spustit příkazem:
+    <br />
+    <code>dotnet run</code>
+    <br />
+</p>
+
+<h2>Známé problémy</h2>
+<p>Nejsou.</p>
+
+
+
+</body></html>

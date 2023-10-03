@@ -1,0 +1,36 @@
+﻿@page "/Patients/{patientid}/Reports/Create"
+@model CreateModel
+@{
+    ViewData["Title"] = "Vytvořit zprávu";
+}
+
+<!--
+ IIS Projekt - Nemocnice
+ Listopad 2020
+ Autoři: Radek Veverka (xvever13)
+         Adam Sedmík (xsedmi04)
+-->
+
+<h3>Nová lékařská zpráva</h3>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Input.Header"></label>
+        <input asp-for="Input.Header" class="form-control" />
+        <span asp-validation-for="Input.Header" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Input.Content"></label>
+        <textarea class="form-control" style="height: 30rem" asp-for="Input.Content"></textarea>
+        <span asp-validation-for="Input.Content" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Input.FileUploads"></label>
+        <input accept="image/*" asp-for="Input.FileUploads" class="form-control" />
+        <span asp-validation-for="Input.FileUploads" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Vložit zprávu</button>
+</form>

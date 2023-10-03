@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Here is streetmap definition -->
+<!-- Street is defined as two points and unique name, points are defined by their X and Y coordinate -->
+<!-- If streets have same common point, they connect -->
+<!-- Stops are defined under street they are at, with unique name -->
+<!-- Stop position is defined as percentage of street lenght where it's at, number between 0.01 and 0.99 -->
+<streetmap>
+    <street x1="100" y1="100" x2="300" y2="150" name="Street A">
+        <stop name="A1" position="0.2"></stop>
+        <stop name="A2" position="0.7"></stop>
+    </street>
+    <street x1="400" y1="150" x2="300" y2="150" name="Street B">
+    </street>
+    <street x1="600" y1="100" x2="400" y2="150" name="Street C">
+        <stop name="C1" position="0.4"></stop>
+    </street>
+    <street x1="700" y1="150" x2="600" y2="100" name="Street D">
+        <stop name="D1" position="0.6"></stop>
+    </street>
+    <street x1="700" y1="150" x2="700" y2="250" name="Street E">
+    </street>
+    <street x1="700" y1="250" x2="800" y2="400" name="Street F">
+        <stop name="F1" position="0.2"></stop>
+        <stop name="F2" position="0.5"></stop>
+    </street>
+    <street x1="800" y1="400" x2="900" y2="250" name="Street G">
+        <stop name="G1" position="0.99"></stop>
+        <stop name="G2" position="0.4"></stop>
+    </street>
+    <street x1="800" y1="400" x2="700" y2="500" name="Street H">
+        <stop name="H1" position="0.4"></stop>
+    </street>
+    <street x1="700" y1="500" x2="100" y2="400" name="Street I">
+        <stop name="I1" position="0.1"></stop>
+        <stop name="I2" position="0.4"></stop>
+        <stop name="I3" position="0.7"></stop>
+    </street>
+    <street x1="100" y1="400" x2="150" y2="300" name="Street J">
+        <stop name="J1" position="0.7"></stop>
+    </street>
+    <street x1="150" y1="300" x2="50" y2="200" name="Street K">
+        <stop name="K1" position="0.99"></stop>
+    </street>
+    <street x1="100" y1="100" x2="150" y2="300" name="Street L">
+        <stop name="L1" position="0.6"></stop>
+    </street>
+    <street x1="100" y1="100" x2="200" y2="200" name="Street M">
+        <stop name="M1" position="0.5"></stop>
+    </street>
+    <street x1="200" y1="200" x2="300" y2="250" name="Street N">
+    </street>
+    <street x1="200" y1="200" x2="250" y2="350" name="Street O">
+        <stop name="O1" position="0.6"></stop>
+    </street>
+    <street x1="500" y1="350" x2="250" y2="350" name="Street P">
+        <stop name="P1" position="0.2"></stop>
+        <stop name="P2" position="0.8"></stop>
+    </street>
+    <street x1="300" y1="250" x2="400" y2="150" name="Street Q">
+        <stop name="Q1" position="0.6"></stop>
+    </street>
+    <street x1="300" y1="250" x2="400" y2="250" name="Street R">
+        <stop name="R1" position="0.3"></stop>
+    </street>
+    <street x1="400" y1="250" x2="500" y2="200" name="Street S">
+        <stop name="S1" position="0.6"></stop>
+    </street>
+    <street x1="400" y1="250" x2="500" y2="350" name="Street T">
+        <stop name="T1" position="0.4"></stop>
+    </street>
+    <street x1="550" y1="250" x2="500" y2="200" name="Street U">
+    </street>
+    <street x1="600" y1="100" x2="550" y2="250" name="Street V">
+        <stop name="V1" position="0.6"></stop>
+    </street>
+    <street x1="700" y1="250" x2="550" y2="250" name="Street W">
+        <stop name="W1" position="0.1"></stop>
+        <stop name="W2" position="0.8"></stop>
+    </street>
+    <street x1="800" y1="400" x2="500" y2="350" name="Street X">
+        <stop name="X1" position="0.3"></stop>
+        <stop name="X2" position="0.8"></stop>
+    </street>
+    <street x1="500" y1="350" x2="300" y2="400" name="Street Y">
+        <stop name="Y1" position="0.7"></stop>
+    </street>
+    <street x1="100" y1="400" x2="300" y2="400" name="Street Z">
+        <stop name="Z1" position="0.4"></stop>
+    </street>
+</streetmap>

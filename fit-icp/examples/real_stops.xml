@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Here gathered are names of stops and their latitude and longitude used to render on Real module -->
+<!-- Do not change this -->
+<stops>
+    <stop latitude="25.760464" longitude="-80.192874"  name="Financial District"></stop>
+    <stop latitude="25.762692" longitude="-80.195271"  name="Brickell"></stop>
+    <stop latitude="25.764041" longitude="-80.192560"  name="Tenth Street Promenade"></stop>
+    <stop latitude="25.766890" longitude="-80.192118"  name="Brickel City Centre (Eight Street)"></stop>
+    <stop latitude="25.769156" longitude="-80.192229"  name="Fifth Street"></stop>
+    <stop latitude="25.771048" longitude="-80.192556"  name="Riverwalk"></stop>
+    <stop latitude="25.772019" longitude="-80.193507"  name="Third Street"></stop>
+    <stop latitude="25.771861" longitude="-80.191698"  name="Knight Center"></stop>
+    <stop latitude="25.773092" longitude="-80.187282"  name="Bayfront Park"></stop>
+    <stop latitude="25.773413" longitude="-80.193583"  name="Miami Avenue"></stop>
+    <stop latitude="25.762692" longitude="-80.195271"  name="Brickell"></stop>
+    <stop latitude="25.776013" longitude="-80.196098"  name="Government Center"></stop>
+    <stop latitude="25.775726" longitude="-80.189850"  name="First Street"></stop>
+    <stop latitude="25.777585" longitude="-80.189915"  name="College Bayside"></stop>
+    <stop latitude="25.778835" longitude="-80.195306"  name="Wilkie D. Ferguson, Jr."></stop>
+    <stop latitude="25.778924" longitude="-80.192090"  name="College North"></stop>
+    <stop latitude="25.780543" longitude="-80.190567"  name="Freedom Tower"></stop>
+    <stop latitude="25.782474" longitude="-80.190643"  name="Park West"></stop>
+    <stop latitude="25.784862" longitude="-80.190790"  name="Eleventh Street"></stop>
+    <stop latitude="25.785916" longitude="-80.187934"  name="Museum Park"></stop>
+    <stop latitude="25.789456" longitude="-80.187998"  name="Adrienne Arsht Center"></stop>
+    <stop latitude="25.789371" longitude="-80.193184"  name="School Board Station"></stop>
+</stops>

@@ -1,0 +1,43 @@
+﻿@page "/Accounts/Edit/{username?}"
+@model iis_project.Pages.Accounts.EditModel
+@{
+    ViewData["Title"] = "Upravit účet";
+}
+
+<!--
+ IIS Projekt - Nemocnice
+ Listopad 2020
+ Autoři: Radek Veverka (xvever13)
+         Adam Sedmík (xsedmi04)
+-->
+
+<div class="container position-relative">
+    <form method="post">
+        <h4>Detaily účtu</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <partial name="_UserFormCommon" model="Model.Input" />
+
+        @if (User.IsInRole(RolesMetadata.ADMIN))
+        {
+            <div class="form-group">
+                <label asp-for="Input.Roles"></label><br />
+
+                @foreach (var item in RolesMetadata.RolesNameMap)
+                {
+                    <label><input type="checkbox" name="Roles" checked="@(Model.Input.Roles.Contains(item.Key))" value="@item.Key" /> @item.Value </label><br />
+                }
+            </div>
+        }
+
+        <div class="btn-group">
+            <button type="submit" class="btn btn-primary">Uložit</button>
+            @if (!Model.NewUser)
+            {
+                <span>&nbsp;</span>
+                <a asp-page="./Delete" asp-route-username="@RouteData.Values["username"]" class="btn btn-danger"><i class="fas fa-trash-alt"></i>  Smazat účet</a>
+            }
+        </div>
+    </form>
+</div>

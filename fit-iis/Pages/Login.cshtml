@@ -1,0 +1,52 @@
+﻿@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Přihlásit se";
+}
+
+<!--
+ IIS Projekt - Nemocnice
+ Listopad 2020
+ Autoři: Radek Veverka (xvever13)
+         Adam Sedmík (xsedmi04)
+-->
+
+<div class="container">
+
+    <form id="account" method="post">
+        <h4>Přihlásit se</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="LoginInput.Email"></label>
+            <input asp-for="LoginInput.Email" class="form-control" />
+            <span asp-validation-for="LoginInput.Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="LoginInput.Password"></label>
+            <input asp-for="LoginInput.Password" class="form-control" />
+            <span asp-validation-for="LoginInput.Password" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <div class="checkbox">
+                <label asp-for="LoginInput.RememberMe">
+                    <input asp-for="LoginInput.RememberMe" />
+                    @Html.DisplayNameFor(m => m.LoginInput.RememberMe)
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Přihlásit se</button>
+        </div>
+
+        <div class="form-group">
+            <p>
+                <a asp-page="./Register">Registrovat</a>
+            </p>
+        </div>
+    </form>
+</div>

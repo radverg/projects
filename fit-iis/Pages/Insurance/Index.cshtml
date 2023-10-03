@@ -1,0 +1,62 @@
+﻿@page
+@using iis_project.Utils
+@model iis_project.Pages.Insurance.IndexModel
+@{
+    ViewData["Title"] = "Nevyřízené žádosti";
+}
+
+<!--
+ IIS Projekt - Nemocnice
+ Listopad 2020
+ Autoři: Radek Veverka (xvever13)
+         Adam Sedmík (xsedmi04)
+-->
+
+@if (!Model.TicketActs.Any())
+{
+    <h2><b>Nebyly nalezeny žádné žádosti.</b></h2>
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            <strong>Nevyřízené žádosti</strong>
+        </div>
+        <table class="table">
+            <tr>
+                <th>Pacient</th>
+                <th>Doktor</th>
+                <th>Záznam</th>
+                <th>Úkon</th>
+                <th>Cena</th>
+                <th></th>
+            </tr>
+            @foreach (TicketAct item in Model.TicketActs)
+            {
+                <tr>
+                    <td>@item.MedicaTicket.Record.Patient.Fullname</td>
+                    <td>@item.MedicaTicket.Doctor.Fullname</td>
+                    <td>@item.MedicaTicket.Record.Name</td>
+                    <td>@item.MedicalAct.Name</td>
+                    <td>@item.MedicalAct.Price CZK</td>
+                    @if (item.Status == Data.Enums.StatusInsurance.Open)
+                    {
+                        <td>
+                            <div class="row">
+                                <form asp-page-handler="confirm" method="post">
+                                    <input type="hidden" name="ticketactid" value=@item.TicketActId />
+                                    <button class="btn btn-primary" style="background-color:green;border-color:green">Přijmout</button>
+                                </form>
+                                &nbsp;
+                                <form asp-page-handler="decline" method="post">
+                                    <input type="hidden" name="ticketactid" value=@item.TicketActId />
+                                    <button class="btn btn-primary" style="background-color:red;border-color:red">Zamítnout</button>
+                                </form>
+                            </div>
+                        </td>
+                    }
+                </tr>
+            }
+        </table>
+    </div>
+}

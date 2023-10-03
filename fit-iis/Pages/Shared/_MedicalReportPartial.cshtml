@@ -1,0 +1,29 @@
+﻿@using iis_project.Pages
+@model MedicalReport
+
+<!--
+ IIS Projekt - Nemocnice
+ Listopad 2020
+ Autoři: Radek Veverka (xvever13)
+         Adam Sedmík (xsedmi04)
+-->
+
+@if (Model != null)
+{
+    <div class="medical-report">
+        <h2>@Model.Header</h2>
+        <p class="text-justify preserve-linebreaks">
+            @Model.Content
+        </p>
+
+        @foreach (ReportImage i in Model.Images)
+        {
+            <div class="container"><img src="/@i.UrlRelative" /></div>
+        }
+    </div>
+
+}
+else
+{
+    <p class="text-danger text-center">Nebyla nalezena žádná lékařská zpráva.</p>
+}

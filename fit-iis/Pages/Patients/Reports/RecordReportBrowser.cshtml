@@ -1,0 +1,114 @@
+﻿@page "/Patients/{patientid}/Records/{recordid}/ReportBrowser"
+@model iis_project.Pages.Patients.Reports.RecordReportBrowserModel
+@using iis_project.Utils
+@using iis_project.Pages.Shared
+@{
+    ViewData["Title"] = "Prohlížeč záznamu";
+}
+
+<!--
+ IIS Projekt - Nemocnice
+ Listopad 2020
+ Autoři: Radek Veverka (xvever13)
+         Adam Sedmík (xsedmi04)
+-->
+
+<a asp-page="/Patients/Records/Index" asp-route-patientid="@RouteData.Values["patientid"]"><h3><i class="fas fa-arrow-left"></i>&nbsp; Zpět na seznam záznamů</h3></a>
+
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <strong style="font-size: 1.2rem">Zdravotní záznam: @Model.Record.Name &nbsp;</strong>
+                <small class="d-block preserve-linebreaks">@Model.Record.Description</small>
+                <small class="d-block">Lékař: @Model.Record.Doctor.Fullname</small>
+            </div>
+
+            @if (Model.Editable && Model.Record.Status != Data.Enums.StatusRecord.Closed)
+            {
+                <div class="col-1 text-right">
+                    <a asp-page="/Patients/Records/Finish" asp-route-patientid="@RouteData.Values["patientid"]" asp-route-recordid="@Model.Record.MedicalRecordId" asp-route-returnUrl="@Request.Path">Dokončit</a>
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-2">
+                @if (Model.Editable)
+                {
+                    <a class="d-block text-center mb-3" asp-page="./Create" asp-route-patientid="@RouteData.Values["patientid"]" asp-route-recordid="@Model.Record.MedicalRecordId">
+                        <i class="fas fa-plus"></i>&nbsp;Přidat lékařskou zprávu
+                    </a>
+                }
+                else
+                {
+                    <strong class="mb-1 d-block">Lékařské zprávy</strong>
+                }
+
+                <div>
+                    @foreach (var item in Model.Reports)
+                    {
+                        <a class="card report-link @(Model.SelectedReport == item ? "report-selected" : "")"
+                           asp-page="./RecordReportBrowser"
+                           asp-route-patientid="@RouteData.Values["patientid"]"
+                           asp-route-recordid="@RouteData.Values["recordid"]"
+                           asp-route-selectedReportId="@item.MedicalReportId">
+                            <div class="card-body">
+                                <div class="dt-caption">
+                                    @item.DtCreated
+                                </div>
+
+                                <div>
+                                    <strong>@item.Header?.Trunc(35)</strong>
+                                </div>
+
+                                <div>
+                                    <small>@item.Content?.Trunc(80)</small>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+            </div>
+
+            <div class="col">
+                <partial name="_MedicalReportPartial" model="Model.SelectedReport" />
+            </div>
+
+            <div class="col-2">
+                @if (Model.Editable)
+                {
+                    <a class="d-block text-center mb-1" asp-page="/Patients/Records/Tickets/Create" asp-route-patientid="@RouteData.Values["patientid"]" asp-route-recordid="@Model.Record.MedicalRecordId"><i class="fas fa-plus"></i>&nbsp;Přidat vyšetření (tiket)</a>
+                }
+                else
+                {
+                    <div class="mb-1 text-right">Vyšetření</div>
+                }
+
+
+                <div>
+                    @foreach (var item in Model.Tickets)
+                    {
+                        <a class="card report-link d-block report-link"
+                           asp-page="./TicketReportBrowser"
+                           asp-route-patientid="@RouteData.Values["patientid"]"
+                           asp-route-recordid="@RouteData.Values["recordid"]"
+                           asp-route-ticketid="@item.MedicalTicketId">
+
+                            <div class="card-body p-2 text-right">
+                                <div class="dt-caption">@item.DtCreated</div>
+                                <strong>@item.Description?.Trunc(35)</strong>
+                                <div>Stav: @Utils.StatusConverter.ConvertStatus(item.Status)</div>
+                            </div>
+
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

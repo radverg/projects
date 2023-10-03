@@ -1,0 +1,78 @@
+﻿@page
+@using iis_project.Utils
+@model iis_project.Pages.Patients.Tickets.IndexModel
+@{
+    ViewData["Title"] = "Žádosti o vyšetření";
+}
+
+<!--
+ IIS Projekt - Nemocnice
+ Listopad 2020
+ Autoři: Radek Veverka (xvever13)
+         Adam Sedmík (xsedmi04)
+-->
+
+<h3>Moje vyšetření</h3>
+
+<div class="card">
+    <div class="card-header">
+        <strong>Probíhající</strong>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>Vytvořeno</th>
+            <th>Pacient</th>
+            <th>Popis</th>
+            <th></th>
+        </tr>
+
+        @foreach (var t in Model.Tickets.Where(t => t.Status == Data.Enums.StatusTicket.Open))
+        {
+            <tr>
+                <td>@t.DtCreated, @t.CreatedBy?.Fullname</td>
+                <td>@t.Record.Patient.Fullname</td>
+                <td>@t.Description?.Trunc(35)</td>
+                <td class="text-right">
+                    <a asp-page="/Patients/Reports/TicketReportBrowser"
+                       asp-route-recordid="@t.Record.MedicalRecordId"
+                       asp-route-ticketid="@t.MedicalTicketId"
+                       asp-route-patientid="@t.Record.Patient.UserName"><i class="fas fa-info"></i>&nbsp; Detaily</a> &nbsp;|&nbsp;
+                    <a title="Posune tiket do uzavřeného stavu." class="btn btn-primary" asp-page="./Finish" asp-route-ticketid="@t.MedicalTicketId" asp-route-returnUrl="@Request.Path">Dokončit</a>
+
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div class="mt-2 card">
+    <div class="card-header">
+        <strong>Dokončené</strong>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>Vytvořeno</th>
+            <th>Pacient</th>
+            <th>Popis</th>
+            <th></th>
+        </tr>
+
+        @foreach (var t in Model.Tickets.Where(t => t.Status == Data.Enums.StatusTicket.Closed))
+        {
+            <tr>
+                <td>@t.DtCreated, @t.CreatedBy?.Fullname</td>
+                <td>@t.Record.Patient.Fullname</td>
+                <td>@t.Description</td>
+                <td>
+                    <a asp-page="/Patients/Reports/TicketReportBrowser"
+                       asp-route-recordid="@t.Record.MedicalRecordId"
+                       asp-route-ticketid="@t.MedicalTicketId"
+                       asp-route-patientid="@t.Record.Patient.UserName"><i class="fas fa-info"></i>&nbsp; Detaily</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

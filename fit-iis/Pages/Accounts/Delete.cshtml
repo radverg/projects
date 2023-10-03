@@ -1,0 +1,38 @@
+﻿@page "/Accounts/{username}/Delete"
+@model iis_project.Pages.Accounts.DeleteModel
+@{
+    ViewData["Title"] = "Vymazat účet";
+}
+
+<!--
+ IIS Projekt - Nemocnice
+ Listopad 2020
+ Autoři: Radek Veverka (xvever13)
+         Adam Sedmík (xsedmi04)
+-->
+
+<form method="post" class="container">
+
+    @if (Model.TransferRecords.Count != 0)
+    {
+        <p class="text-danger">S uživatelem je asociováno @Model.TransferRecords.Count zdravotních záznamů, které je třeba při mazání převést k jinému lékaři.</p>
+
+        <div class="form-group">
+            <label class="label-required" asp-for="Input.TransferToDoctorId"></label>
+            <select asp-for="Input.TransferToDoctorId" asp-items="Model.AvailableDoctors" class="form-control"></select>
+            <span asp-validation-for="Input.TransferToDoctorId" class="text-danger"></span>
+        </div>
+    }
+
+    @if (Model.MarkTickets.Count != 0)
+    {
+        <p class="text-danger">Uživatel je zodpovědný za vyřízení @Model.MarkTickets.Count tiketů, které budou ponechány bez správce, dokud je lékař nepřiřadí.</p>
+    }
+    <div class="text-danger">Bude smazán uživatel @Model.DeleteTarget.UserName (@Model.DeleteTarget.Fullname).</div>
+    <button class="btn btn-danger" type="submit">Potvrdit smazání</button>
+
+
+</form>
+
+@{
+}
