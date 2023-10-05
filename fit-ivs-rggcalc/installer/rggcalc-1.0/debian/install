@@ -1,0 +1,7 @@
+install/rggcalc.xpm /usr/share/pixmaps
+install/rggcalc.desktop /usr/share/applications
+../../src/calc.py /opt/rggcalc
+calculator_gui.py /opt/rggcalc
+../../src/expression_evaluator.py /opt/rggcalc
+../../src/rgg_mathlib.py /opt/rggcalc
+../../src/assets/ /opt/rggcalc/

@@ -1,0 +1,70 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage[left=2cm,text={17cm, 24cm},top=3cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{makeidx}
+\usepackage[T1]{fontenc} % fonty
+\author{Lukáš Wagner}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+	\vspace{2cm}
+	\begin{center}
+			{\Huge IVS - Profiling}\\
+		\vspace{0.2cm}
+		{\Large
+			Testovací tým\\
+			\vspace{0.2cm}
+			\today
+		}
+	\end{center}
+	\textbf{Výsledek profilovací knihovny:}
+	
+	\hspace{20pt}15265 function calls in 0.048 seconds
+	
+	\begin{table}[h]
+		\begin{tabular}{|r|r|r|r|r|l|}
+			\hline
+			\multicolumn{1}{|l|}{\textbf{ncalls}} & \multicolumn{1}{l|}{\textbf{tottime}} & \multicolumn{1}{l|}{\textbf{percall}} & \multicolumn{1}{l|}{\textbf{cumtime}} & \multicolumn{1}{l|}{\textbf{percall}} & \textbf{filename:lineno(function)}    \\ \hline
+			1                                     & 0.000                                 & 0.000                                 & 0.048                                 & 0.048                                 & :0(exec)                              \\ 
+			6025                                  & 0.009                                 & 0.000                                 & 0.009                                 & 0.000                                 & :0(isinstance)                        \\ 
+			1                                     & 0.000                                 & 0.000                                 & 0.000                                 & 0.000                                 & :0(len)                               \\ 
+			1                                     & 0.000                                 & 0.000                                 & 0.000                                 & 0.000                                 & :0(print)                             \\ 
+			1                                     & 0.000                                 & 0.000                                 & 0.000                                 & 0.000                                 & :0(setprofile)                        \\ 
+			200                                   & 0.000                                 & 0.000                                 & 0.000                                 & 0.000                                 & :0(split)                             \\ 
+			3                                     & 0.000                                 & 0.000                                 & 0.000                                 & 0.000                                 & :0(utf\_8\_decode)                    \\ 
+			1                                     & 0.000                                 & 0.000                                 & 0.048                                 & 0.048                                 & \&lt;string\&gt;:1(\&lt;module\&gt;)  \\ 
+			3                                     & 0.000                                 & 0.000                                 & 0.000                                 & 0.000                                 & codecs.py:318(decode)                 \\ 
+			1                                     & 0.006                                 & 0.006                                 & 0.048                                 & 0.048                                 & deviation.py:16(run)                  \\ 
+			1                                     & 0.000                                 & 0.000                                 & 0.048                                 & 0.048                                 & profile:0(deviation.run())            \\ 
+			0                                     & 0.000                                 & 0.000                                 &                                       &                                       & profile:0(profiler)                   \\ 
+			2                                     & 0.000                                 & 0.000                                 & 0.000                                 & 0.000                                 & rgg\_mathlib.py:12(sub)               \\ 
+			3                                     & 0.000                                 & 0.000                                 & 0.000                                 & 0.000                                 & rgg\_mathlib.py:18(mul)               \\ 
+			2                                     & 0.000                                 & 0.000                                 & 0.000                                 & 0.000                                 & rgg\_mathlib.py:24(div)               \\ 
+			6018                                  & 0.018                                 & 0.000                                 & 0.026                                 & 0.000                                 & rgg\_mathlib.py:3(\_\_valid\_operand) \\ 
+			1001                                  & 0.005                                 & 0.000                                 & 0.014                                 & 0.000                                 & rgg\_mathlib.py:30(pow)               \\ 
+			1                                     & 0.000                                 & 0.000                                 & 0.000                                 & 0.000                                 & rgg\_mathlib.py:51(root)              \\ 
+			2000                                  & 0.010                                 & 0.000                                 & 0.027                                 & 0.000                                 & rgg\_mathlib.py:6(add)                \\ \hline
+		\end{tabular}
+	\end{table}
+	\vspace{1em}
+	
+	\textbf{Výsledek odchylky:}
+	
+	\hspace{20pt} 1.0000000864464458
+	\vspace{1.5em}\\
+	\textbf{Závěr:}
+	
+	\setlength{\parindent}{20pt}
+	Podle všeho trávíme nejvíce času ověřováním platnosti argumentů (0.018s). To protože ověřování
+	platného vstupu je zapotřebí v každém volání knihovní funkce. Kdyby se nám podařilo zefektivnit toto
+	ověřování, mělo by to veliký dopad na rychlost naší knihovny.
+	
+	Zároveň ovšem ověřování platnosti čísel netrvá tak dlouho, jako samy výpočetní funkce. Vidíme, že
+	ověření čísla bylo zavoláno 3x častěji než sčítání, ale netrvalo dohromady ani dvakrát tak dlouho. Proto
+	by nebylo od věci zaměřit se i na výpočetní funkce, kde už jsme limitováni možnostmi jazyka (Python) a
+	jediné řešení by tedy bylo přejít třeba na Cython.
+	
+
+\end{document}

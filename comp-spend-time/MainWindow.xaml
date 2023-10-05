@@ -1,0 +1,72 @@
+﻿<Window x:Class="CompSpendTime.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Měřič času v1.0 - Zastaven
+        " Height="311" Width="420" MaxHeight="300" MinHeight="249" MaxWidth="420" MinWidth="420" WindowStartupLocation="CenterScreen" Visibility="Visible" Icon="Alarm.png" Closing="Window_Closing">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="56"/>
+            <RowDefinition/>
+            <RowDefinition Height="43"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical" Grid.ColumnSpan="2">
+            <TextBlock Text="Vítejte v programu pro měření času stráveného u počítače!" />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Dnes je " />
+                <TextBlock Text= "" FontWeight="Bold" Name="todayTextBlock"/>
+                <TextBlock Text=" hodin." />               
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Čas se měří od: " />
+                <TextBlock Name="firstRunTextBlock" Text=""></TextBlock>
+            </StackPanel>
+            
+        </StackPanel>
+        <Image Source="Alarm.png" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Stretch="Uniform" Margin="0,0,0,10" Width="31"/>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" Margin="0,10,0,10" Grid.RowSpan="2">
+            <TextBox IsEnabled="False" Margin="0,0,0,2" Name="totalTimeOnComputerTextBox" />
+            <TextBox IsEnabled="False" Margin="0,0,0,2" Name="todayOnComputerTextBox"/>
+            <TextBox IsEnabled="False" Margin="0,0,0,2" Name="yesterdayOnComputerTextBox" />
+            <TextBox IsEnabled="False" Margin="0,0,0,2" Name="averageOncomputerTextBox"/>
+            <TextBox IsEnabled="False" Name="maxOnComputerTextBox" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="1" Margin="0, 10, 0, 10" Orientation="Vertical" Grid.RowSpan="2">
+            <TextBlock Text="Celkový čas u počítače: " Margin="0,0,0,5" Name="allTimeSpentTextBlock"/>
+            <TextBlock Text="Dnes stráveno u počítače: " Margin="0,0,0,5" Foreground="Red" FontWeight="Bold"  />
+            <TextBlock Text="Poslední den stráveno
+ u počítače: " Margin="0,0,0,5"/>
+            <TextBlock Text="Průměrný čas denně u počítače:" Margin="0,0,0,5" />
+            <TextBlock Text="Maximální čas za den u počítače:" />
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical">
+            <CheckBox Name="runOnStartUpCheckBox" Content="Spuštět program při startu počítače (doporučeno)" IsChecked="True" Margin="0,5,0,5" Click="runOnStartUpCheckBox_Click"/>
+            <CheckBox Name="runMinimizedCheckBox" Content="Spouštět program schovaný" IsChecked="True" Checked="runMinimizedCheckBox_Checked" Click="runMinimizedCheckBox_Click" />
+        </StackPanel>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Row="0" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Height="2"/>
+        <StackPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Grid.ColumnSpan="2" Margin="81,0" Height="20" Width="230">
+            <Button Content="Spustit" Width="70" Height="20" Margin="0, 0, 10, 0" Click="Button_Click" />
+            <Button Content="Zastavit" Width="70" Height="20" Margin="0, 0, 10, 0" Click="Button_Click_1" />
+            <Button Content="Schovat" Width="70" Height="20" Name="hideButton" Click="hideButton_Click" />
+
+        </StackPanel>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="2"/>
+        <RichTextBox Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="186,20,-90,-90" Grid.Row="3" VerticalAlignment="Top" Width="100" Visibility="Hidden" Name="richTextBox">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="RichTextBox"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
+
+
+
+    </Grid>
+</Window>

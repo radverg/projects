@@ -1,0 +1,9 @@
+/src/__pycache__
+/.vscode
+/src/.vscode
+# Executables
+*.exe
+*.out
+*.app
+/doc
+/xvever13_xsedmi04_xwagne10_xplach09

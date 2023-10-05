@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Qt;Office;
+Exec=rggcalc
+GenericName=Simple Python Qt Calculator
+Icon=/usr/share/pixmaps/rggcalc.xpm
+Name=Rgg Kalkulačka
+Type=Application
+X-KDE-StartupNotify=false

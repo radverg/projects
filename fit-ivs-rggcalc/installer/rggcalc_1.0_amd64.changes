@@ -1,0 +1,25 @@
+Format: 1.8
+Date: Mon, 22 Apr 2019 23:11:46 +0200
+Source: rggcalc
+Binary: rggcalc
+Architecture: amd64
+Version: 1.0
+Distribution: unstable
+Urgency: medium
+Maintainer: rgg <xvever13@stud.fit.vutbr.cz xplach09@stud.fit.vutbr.cz xwagne10@stud.fit.vutbr.cz xsedmi04@stud.fit.vutbr.cz>
+Changed-By: rgg <xvever13@stud.fit.vutbr.cz xplach09@stud.fit.vutbr.cz xwagne10@stud.fit.vutbr.cz xsedmi04@stud.fit.vutbr.cz>
+Description:
+ rggcalc    - Simple calculator
+Changes:
+ rggcalc (1.0) unstable; urgency=medium
+ .
+   * Initial Release.
+Checksums-Sha1:
+ 44857f6f5f8c6c98a058b19330102f961d59141a 5440 rggcalc_1.0_amd64.buildinfo
+ 710a2be35014d656d751966ffc65dc10c9d221f4 39028 rggcalc_1.0_amd64.deb
+Checksums-Sha256:
+ 001ead6de33aae159a6491d8f9ae31e681e6f92b9689db54ad6e36d4d93e8ec5 5440 rggcalc_1.0_amd64.buildinfo
+ d75c8546ffee5e8fd5475935cf57b413864eda2067fd9d545e335e648b764131 39028 rggcalc_1.0_amd64.deb
+Files:
+ cc00e1c09aab1a0aaf4bcc4910d1e42e 5440 Office optional rggcalc_1.0_amd64.buildinfo
+ bf2139995a5a9a051f22c28ecc0a6739 39028 Office optional rggcalc_1.0_amd64.deb

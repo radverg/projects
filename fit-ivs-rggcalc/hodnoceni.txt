@@ -1,0 +1,4 @@
+xvever13 100 (testy, vyhodnocovač výrazů, doxyfile)
+xwagne10 100 (profiling, mockup, závorky)
+xsedmi04 100 (matematická knihovna, instalátor, makefile)
+xplach09 100 (gui, uživatelská dokumentace)

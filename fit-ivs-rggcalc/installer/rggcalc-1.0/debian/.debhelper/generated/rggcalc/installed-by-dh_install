@@ -1,0 +1,7 @@
+./install/rggcalc.xpm
+./install/rggcalc.desktop
+./../../src/calc.py
+./calculator_gui.py
+./../../src/expression_evaluator.py
+./../../src/rgg_mathlib.py
+./../../src/assets/

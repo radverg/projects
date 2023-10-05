@@ -1,0 +1,71 @@
+------------ IVS týmový projekt - PLÁN --------------
+
+Název projektu a aplikace: rggcalc
+
+Členové týmu:	Radek Veverka (xvever13), vedoucí
+		Dominik Plachý (xplach09)
+		Lukáš Wagner (xwagne10)
+		Adam Sedmík (xsedmi04)
+
+
+--- Termíny: ---
+
+středa 20.3.2019	- deadline na plán projektu
+
+neděle 24.3.2019 	- hotové unit testy zatím neexistující matematické knihovny
+neděle 31.3.2019 	- hotová matematická knihovna
+neděle  7.4.2019 	- hotové gui
+neděle 14.4.2019	- hotová funkční kalkulačka - gui a knihovna propojeny, hotový profiling
+středa 17.4.2019 	- hotový instalátor, makefile 
+neděle 21.4.2019	- hotový mockup, doxyfile, uživatelská dokumentace
+
+středa 24.4.2019	- odevzdání výsledného produktu
+čtvrtek 2.5.2019	- odevzdání seznamu problémů (každý člen)
+
+
+--- Rozdělení úkolů ---
+
+Níže uvedené rozdělní není vyloženě striktní, ale určuje, který člen týmu má na čem nejvyšší podíl a odpovědnost.
+Předpokládáme, že všichni si projdou vše (například formou code review), co vytvořili ostatní.
+Kdo nebude mít zrovna nic na práci, může vypomoci s úkoly ostatních členů.
+
+xplach09:
+- GUI, uživatelská dokumentace
+
+xsedmi04:
+- Instalátor, matematická knihovna, makefile
+
+xwagne10:
+- Profiling, pokročilé matematické funkce, závorky
+
+xvever13:
+- Unit testy, propojení gui a knihovny
+
+Všichni: mockup, doxyfile
+
+
+--- Správa verzí: ---
+
+Používáme git. Vzdálený repozitář je hostován na https://github.com.
+Účet ivskontrola na githubu je přidán na collaborators list a má tedy přístup do repozitáře.
+Repozitář se nachází na adrese https://github.com/RademCZ/ivs-rggcalc
+
+
+--- Komunikace: ---
+
+Pro týmovou komunikaci budeme používat Discord, což je program, který umožňuje textovou i hlasovou komunikaci skupiny uživatelů.
+Discord bude pravidelně kontrolován všemi členy a kanál dedikovaný projektu nebude špiněn offtopicem.
+https://discord.com
+Budeme pořádat i pravidelná týmová setkání každé úterý v rezervované místnosti ve FIT knihovně.
+
+
+--- Jazyk a coding style: ---
+
+Programovacím jazykem bude Python.
+Veškeré komentáře, identifikátory a popisy commitů budou psány v angličtině.
+Uživatelská dokumentace bude v češtině.
+Odsazovat budeme tabulátorem.
+Zakončení řádků bude linuxové - lf.
+! Všechny textové soubory budou v kódování UTF-8 !
+Názvy proměnných a funkcí budou začínat malým písmenem a budou používat podtržítkovou notaci.
+Názvy tříd budou začínat velkým písmenem a používat CamelCase notaci.

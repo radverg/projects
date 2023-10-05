@@ -1,0 +1,33 @@
+python profiling.py numbers
+1.0000000864464458
+         15270 function calls in 0.060 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.052    0.052 :0(exec)
+     6025    0.009    0.000    0.009    0.000 :0(isinstance)
+        1    0.000    0.000    0.000    0.000 :0(len)
+        1    0.000    0.000    0.000    0.000 :0(nl_langinfo)
+        1    0.000    0.000    0.000    0.000 :0(open)
+        1    0.000    0.000    0.000    0.000 :0(print)
+        1    0.008    0.008    0.008    0.008 :0(setprofile)
+      200    0.001    0.000    0.001    0.000 :0(split)
+        3    0.000    0.000    0.000    0.000 :0(utf_8_decode)
+        1    0.000    0.000    0.052    0.052 <string>:1(<module>)
+        1    0.000    0.000    0.000    0.000 _bootlocale.py:33(getpreferredencoding)
+        1    0.000    0.000    0.000    0.000 codecs.py:260(__init__)
+        1    0.000    0.000    0.000    0.000 codecs.py:309(__init__)
+        3    0.000    0.000    0.000    0.000 codecs.py:319(decode)
+        1    0.008    0.008    0.052    0.052 deviation.py:16(run)
+        1    0.000    0.000    0.060    0.060 profile:0(deviation.run())
+        0    0.000             0.000          profile:0(profiler)
+     1001    0.006    0.000    0.015    0.000 rgg_mathlib.py:104(pow)
+        1    0.000    0.000    0.000    0.000 rgg_mathlib.py:142(root)
+     6018    0.018    0.000    0.027    0.000 rgg_mathlib.py:35(__valid_operand)
+     2000    0.010    0.000    0.029    0.000 rgg_mathlib.py:45(add)
+        2    0.000    0.000    0.000    0.000 rgg_mathlib.py:58(sub)
+        3    0.000    0.000    0.000    0.000 rgg_mathlib.py:71(mul)
+        2    0.000    0.000    0.000    0.000 rgg_mathlib.py:86(div)
+
+

@@ -1,0 +1,10 @@
+32e67be976dd680222df2955c893f10d  opt/rggcalc/assets/icon_rgg.png
+baac6150d29fa7c668337affe9e8e0f4  opt/rggcalc/calc.py
+52cfbf909c63d06c8dda1dabcd085a08  opt/rggcalc/calculator_gui.py
+fd12c3ebd8d9f2cd2f50401f9fa48960  opt/rggcalc/expression_evaluator.py
+16ae3a41d9779d4a70efdb7983af7b23  opt/rggcalc/rgg_mathlib.py
+bb74af6c734e8c0d18aec73a15f3f43e  usr/share/applications/rggcalc.desktop
+eaf073e80a09781b8b79c8847450cdc2  usr/share/doc/rggcalc/README.Debian
+8312a830d85c32d398e1112a9a6145a3  usr/share/doc/rggcalc/changelog.gz
+b924868452686e0d59ab0ec3918d7db9  usr/share/doc/rggcalc/copyright
+b0a0dec1ce12e0ab536631b34bde53bc  usr/share/pixmaps/rggcalc.xpm

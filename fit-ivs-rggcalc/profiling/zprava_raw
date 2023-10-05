@@ -1,0 +1,45 @@
+
+Výsledek odchylky:
+	1.0000000864464458
+
+
+
+Výsledek profilovací knihovny:
+
+         15265 function calls in 0.054 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.051    0.051 :0(exec)
+     6025    0.009    0.000    0.009    0.000 :0(isinstance)
+        1    0.000    0.000    0.000    0.000 :0(len)
+        1    0.000    0.000    0.000    0.000 :0(print)
+        1    0.003    0.003    0.003    0.003 :0(setprofile)
+      200    0.000    0.000    0.000    0.000 :0(split)
+        3    0.000    0.000    0.000    0.000 :0(utf_8_decode)
+        1    0.000    0.000    0.051    0.051 <string>:1(<module>)
+        3    0.000    0.000    0.000    0.000 codecs.py:319(decode)
+        1    0.007    0.007    0.051    0.051 deviation.py:16(run)
+        1    0.000    0.000    0.054    0.054 profile:0(deviation.run())
+        0    0.000             0.000          profile:0(profiler)
+     1001    0.005    0.000    0.015    0.000 rgg_mathlib.py:104(pow)
+        1    0.000    0.000    0.000    0.000 rgg_mathlib.py:142(root)
+     6018    0.019    0.000    0.028    0.000 rgg_mathlib.py:35(__valid_operand)
+     2000    0.010    0.000    0.029    0.000 rgg_mathlib.py:45(add)
+        2    0.000    0.000    0.000    0.000 rgg_mathlib.py:58(sub)
+        3    0.000    0.000    0.000    0.000 rgg_mathlib.py:71(mul)
+        2    0.000    0.000    0.000    0.000 rgg_mathlib.py:86(div)
+
+
+
+Závěr:
+	Podle všeho trávíme nejvíce času ověřováním platnosti argumentů (0.018s). To protože ověřování
+ platného vstupu je zapotřebí v každém volání knihovní funkce. Kdyby se nám podařilo zefektivnit toto
+ ověřování, mělo by to veliký dopad na rychlost naší knihovny.
+
+	Zároveň ovšem ověřování platnosti čísel netrvá tak dlouho, jako samy výpočetní funkce. Vidíme, že
+ ověření čísla bylo zavoláno 3x častěji než sčítání, ale netrvalo dohromady ani dvakrát tak dlouho. Proto
+ by nebylo od věci zaměřit se i na výpočetní funkce, kde už jsme limitováni možnostmi jazyka (Python) a
+ jediné řešení by tedy bylo přejít třeba na Cython.
+

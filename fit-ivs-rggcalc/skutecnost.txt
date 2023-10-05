@@ -1,0 +1,9 @@
+Rozdíly mezi plánem a skutečnosti ku překvapení nebyly vůbec propastné. Každý člen týmu udělal víceméně to, co mu bylo naplánováno, ve většině případů do termínu.
+Nicméně rozdíly se objevily. Například selhal plán mockupu a doxyfilu, na kterém jsme měli pracovat všichni. V praxi to dopadlo tak, že se do tohoto úkolu nikdo nehrnul, jelikož nebyl přidělen nikomu
+konkrétnímu. Důslekem bylo, že tyto dvě části jsme zhotovili den před deadlinem, přestože jejich dokončení bylo naplánováno dříve. Na každém navíc dělal jeden člověk.
+
+Co se týče konkrétních termínu, nepodařilo se nám dodržet pouze poslední dva. První z nich se týkal instalátoru. Druhý, týkající se dokumentace a mockupu, byl nepříliš důmyslně naplánován kolem Velikonoc.
+Nicméně, nejdůležitější termín, kdy jsme měli mít funkční kalkulačku a profiling, byl dodržen, což se stalo hlavní příčinou toho, že jsme to nakonec celé stihli.
+
+Naše plány zněly vždy tak, že "něco bude hotovo do". Tyto myšlenky se ukázaly jako mírně naivní, lépe by odpovídalo "něco bude funkční do". Opravdu, vyloženě hotovo nikdy nic nebylo,
+vždy se objevily drobnosti, které jsme museli ladit později.

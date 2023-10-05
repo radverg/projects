@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="ballons">
+</Property><Property Name="Solution File" Value="C:\Users\Radem\Documents\fleška\Dokumenty\Visual studio programy\ballons\ballons.sln">
+</Property><Property Name="User Options File" Value="C:\Users\Radem\Documents\fleška\Dokumenty\Visual studio programy\ballons\ballons.suo">
+</Property><Property Name="Date" Value="21. srpna 2013">
+</Property><Property Name="Time" Value="11:25">
+</Property><Property Name="Solution" Value="ballons">
+</Property><Property Name="Solution File" Value="C:\Users\Radem\Documents\fleška\Dokumenty\Visual studio programy\ballons\ballons.sln">
+</Property><Property Name="Date" Value="21. srpna 2013">
+</Property><Property Name="Time" Value="11:26:04">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="ballons.sln" Description="File successfully backed up as C:\Users\Radem\Documents\fleška\Dokumenty\Visual studio programy\ballons\Backup\ballons.sln">
+</Event><Event ErrorLevel="0" Project="" Source="ballons.suo" Description="File successfully backed up as C:\Users\Radem\Documents\fleška\Dokumenty\Visual studio programy\ballons\Backup\ballons.suo">
+</Event><Event ErrorLevel="0" Project="ballons" Source="ballons\ballons.csproj" Description="Upgraded XNA Game Studio project to XNA Framework 4.0.">
+</Event><Event ErrorLevel="0" Project="ballons" Source="ballons\ballons.csproj" Description="Project file successfully backed up as C:\Users\Radem\Documents\fleška\Dokumenty\Visual studio programy\ballons\Backup\ballons\ballons.csproj">
+</Event><Event ErrorLevel="0" Project="ballons" Source="ballons\ballons.csproj.user" Description="Project user file successfully backed up as C:\Users\Radem\Documents\fleška\Dokumenty\Visual studio programy\ballons\Backup\ballons\ballons.csproj.user">
+</Event><Event ErrorLevel="0" Project="ballons" Source="ballons\balonek.cs" Description="File successfully backed up as C:\Users\Radem\Documents\fleška\Dokumenty\Visual studio programy\ballons\Backup\ballons\balonek.cs">
+</Event><Event ErrorLevel="0" Project="ballons" Source="ballons\Form1.cs" Description="File successfully backed up as C:\Users\Radem\Documents\fleška\Dokumenty\Visual studio programy\ballons\Backup\ballons\Form1.cs">
+</Event><Event ErrorLevel="0" Project="ballons" Source="ballons\Form1.Designer.cs" Description="File successfully backed up as C:\Users\Radem\Documents\fleška\Dokumenty\Visual studio programy\ballons\Backup\ballons\Form1.Designer.cs">
+</Event><Event ErrorLevel="0" Project="ballons" Source="ballons\levels.cs" Description="File successfully backed up as C:\Users\Radem\Documents\fleška\Dokumenty\Visual studio programy\ballons\Backup\ballons\levels.cs">
+</Event><Event ErrorLevel="0" Project="ballons" Source="ballons\Properties\AssemblyInfo.cs" Description="File successfully backed up as C:\Users\Radem\Documents\fleška\Dokumenty\Visual studio programy\ballons\Backup\ballons\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="ballons" Source="ballons\Program.cs" Description="File successfully backed up as C:\Users\Radem\Documents\fleška\Dokumenty\Visual studio programy\ballons\Backup\ballons\Program.cs">
+</Event><Event ErrorLevel="0" Project="ballons" Source="ballons\Game1.cs" Description="File successfully backed up as C:\Users\Radem\Documents\fleška\Dokumenty\Visual studio programy\ballons\Backup\ballons\Game1.cs">
+</Event><Event ErrorLevel="0" Project="ballons" Source="ballons\Game.ico" Description="File successfully backed up as C:\Users\Radem\Documents\fleška\Dokumenty\Visual studio programy\ballons\Backup\ballons\Game.ico">
+</Event><Event ErrorLevel="0" Project="ballons" Source="ballons\GameThumbnail.png" Description="File successfully backed up as C:\Users\Radem\Documents\fleška\Dokumenty\Visual studio programy\ballons\Backup\ballons\GameThumbnail.png">
+</Event><Event ErrorLevel="0" Project="ballons" Source="ballons\Form1.resx" Description="File successfully backed up as C:\Users\Radem\Documents\fleška\Dokumenty\Visual studio programy\ballons\Backup\ballons\Form1.resx">
+</Event><Event ErrorLevel="0" Project="ballons" Source="ballons\ballons.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="ballons" Source="ballons\ballons.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="ballons.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="ballons.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ballons" Source="ballons\ballons.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="ballons" Source="ballons\ballons.csproj" Description="Upgraded XNA Framework references to XNA Framework 4.0.">
+</Event><Event ErrorLevel="0" Project="Content.contentproj" Source="balon1.png" Description="Copied XNA Game Studio Content Project content to backup location.">
+</Event><Event ErrorLevel="0" Project="Content.contentproj" Source="balon2.png" Description="Copied XNA Game Studio Content Project content to backup location.">
+</Event><Event ErrorLevel="0" Project="Content.contentproj" Source="balon3.png" Description="Copied XNA Game Studio Content Project content to backup location.">
+</Event><Event ErrorLevel="0" Project="Content.contentproj" Source="balon4.png" Description="Copied XNA Game Studio Content Project content to backup location.">
+</Event><Event ErrorLevel="0" Project="Content.contentproj" Source="balon5.png" Description="Copied XNA Game Studio Content Project content to backup location.">
+</Event><Event ErrorLevel="0" Project="Content.contentproj" Source="bum.wav" Description="Copied XNA Game Studio Content Project content to backup location.">
+</Event><Event ErrorLevel="0" Project="Content.contentproj" Source="can2.wma" Description="Copied XNA Game Studio Content Project content to backup location.">
+</Event><Event ErrorLevel="0" Project="Content.contentproj" Source="compdesk.png" Description="Copied XNA Game Studio Content Project content to backup location.">
+</Event><Event ErrorLevel="0" Project="Content.contentproj" Source="Content.contentproj" Description="Copied XNA Game Studio Content Project content to backup location.">
+</Event><Event ErrorLevel="0" Project="Content.contentproj" Source="kurzor.png" Description="Copied XNA Game Studio Content Project content to backup location.">
+</Event><Event ErrorLevel="0" Project="Content.contentproj" Source="panel1.png" Description="Copied XNA Game Studio Content Project content to backup location.">
+</Event><Event ErrorLevel="0" Project="Content.contentproj" Source="pozadi.png" Description="Copied XNA Game Studio Content Project content to backup location.">
+</Event><Event ErrorLevel="0" Project="Content.contentproj" Source="pozadi2.png" Description="Copied XNA Game Studio Content Project content to backup location.">
+</Event><Event ErrorLevel="0" Project="Content.contentproj" Source="SpriteFont1.spritefont" Description="Copied XNA Game Studio Content Project content to backup location.">
+</Event><Event ErrorLevel="0" Project="Content.contentproj" Source="SpriteFont2.spritefont" Description="Copied XNA Game Studio Content Project content to backup location.">
+</Event><Event ErrorLevel="0" Project="ballonsContent" Source="ballons\Content\ballonsContent.contentproj" Description="Upgraded XNA Game Studio nested content projects to XNA Framework 4.0 and promoted to sibling project.">
+</Event></UpgradeLog>
